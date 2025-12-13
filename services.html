@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Yomlinks | Professional Tech Support</title>
+    <meta name="description" content="Professional tech services including system assembly, repair, maintenance, and expert consultation from Yomlinks.">
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="./js/theme.js"></script>
+    <script src="./js/active-link.js"></script>
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary-bg), var(--tertiary-bg));
+            border-bottom: 1px solid var(--border-color);
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .service-card {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: var(--spacing-lg);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-card h3 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .detail-box {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .detail-box h4 {
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 768px) {
+            .service-details {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header {
+                padding: var(--spacing-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hybrid includes: tries external files first, falls back to embedded templates -->
+    <div data-include="includes/header.html" data-include-id="header"></div>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Professional Tech Services</h1>
+            <p>Expert solutions for all your computer hardware and technical needs</p>
+        </div>
+    </section>
+
+    <section style="padding: var(--spacing-2xl) var(--spacing-lg); background-color: var(--primary-bg);">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
+                    <h3>System Assembly</h3>
+                    <p>Professional custom PC building with expert configuration and optimization. We handle all components, testing, and setup.</p>
+                    <a href="./products/tech-support.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--spacing-md);">Learn More</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-laptop-medical"></i></div>
+                    <h3>Repair & Maintenance</h3>
+                    <p>Comprehensive diagnostics and repair services for laptops, desktops, and peripherals. Quick turnaround with professional care.</p>
+                    <a href="./products/tech-support.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--spacing-md);">Learn More</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-headset"></i></div>
+                    <h3>24/7 Technical Support</h3>
+                    <p>Round-the-clock expert assistance via phone, email, and remote desktop. Get help when you need it most.</p>
+                    <a href="./products/tech-support.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--spacing-md);">Learn More</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Warranty Services</h3>
+                    <p>Extended warranty plans and protection packages for all hardware. Complete coverage for peace of mind.</p>
+                    <a href="./products/tech-support.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--spacing-md);">Learn More</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chalkboard-user"></i></div>
+                    <h3>Tech Consultation</h3>
+                    <p>Expert advice on choosing components, building systems, and optimizing performance for your specific needs.</p>
+                    <a href="./products/tech-support.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--spacing-md);">Learn More</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Training & Setup</h3>
+                    <p>Complete setup and training for new systems. Learn how to maximize your hardware investment.</p>
+                    <a href="./products/tech-support.html" class="btn btn-secondary" style="width: 100%; margin-top: var(--spacing-md);">Learn More</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: var(--spacing-2xl) 0;">
+                <h2>Why Choose Our Services?</h2>
+            </div>
+
+            <div class="service-details">
+                <div class="detail-box">
+                    <h4><i class="fas fa-check-circle"></i> Expert Technicians</h4>
+                    <p>Certified professionals with 10+ years of experience</p>
+                </div>
+                <div class="detail-box">
+                    <h4><i class="fas fa-clock"></i> Fast Response</h4>
+                    <p>Priority response within 1 hour for urgent issues</p>
+                </div>
+                <div class="detail-box">
+                    <h4><i class="fas fa-shield-alt"></i> Guaranteed Quality</h4>
+                    <p>100% satisfaction guarantee on all services</p>
+                </div>
+                <div class="detail-box">
+                    <h4><i class="fas fa-dollar-sign"></i> Competitive Pricing</h4>
+                    <p>Transparent pricing with no hidden fees</p>
+                </div>
+            </div>
+
+            <div style="background-color: var(--secondary-bg); border: 1px solid var(--border-color); border-radius: 0.75rem; padding: var(--spacing-lg); text-align: center; margin-top: var(--spacing-2xl);">
+                <h2 style="margin-bottom: var(--spacing-md);">Get Started Today</h2>
+                <p style="margin-bottom: var(--spacing-lg);">Contact our expert team to discuss your tech needs and get a personalized solution.</p>
+                <a href="./contact.html" class="btn btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <div data-include="includes/footer.html" data-include-id="footer"></div>
+
+    <!-- Embedded fallback templates for offline/file:// access -->
+    <template id="include-template-header">
+      <header id="nav">
+        <div class="left-nav">
+          <a href="./index.html" title="Yomlinks Home" class="logo-link"><img src="./images/YomlinksLogo.jpg" alt="Yomlinks logo" loading="lazy"></a>
+        </div>
+        <div class="right-nav">
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="./shop.html" class="nav-link">Shop</a>
+            <a href="./training.html" class="nav-link">Courses</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./contact.html" class="nav-link">Contact</a>
+          </nav>
+          <div class="theme-switcher" role="region" aria-label="Theme switcher">
+            <button 
+              class="theme-toggle" 
+              id="themeToggle" 
+              type="button" 
+              title="Switch to light mode"
+              aria-label="Toggle dark/light theme"
+              aria-checked="false"
+              role="switch">
+              <span class="icon-moon" aria-hidden="true"><i class="fas fa-moon"></i></span>
+              <span class="slider" aria-hidden="true"></span>
+              <span class="icon-sun" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            </button>
+          </div>
+          <a href="./shop.html" title="Shopping Cart" class="cart-icon" aria-label="Open shopping cart"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </header>
+    </template>
+
+    <template id="include-template-footer">
+      <div class="footer">
+        <div class="sub-foot">
+          <h4>Location</h4>
+          <p>Agbede, Ikorodu</p>
+          <p>Lagos, Nigeria</p>
+        </div>
+        <div class="sub-foot">
+          <h4>Contact</h4>
+          <a href="mailto:email@contact.com">ayoabdullah13.com</a>
+          <a href="tel:+07045033528">+07045033528</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Company</h4>
+          <a href="./index.html">About Us</a>
+          <a href="./services.html">Services</a>
+          <a href="./shop.html">Products</a>
+          <a href="./blog.html">Blog</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Support</h4>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">FAQ</a>
+          <a href="#">Track Order</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Legal</h4>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <p>© <span id="year"></span> Yomlinks. All rights reserved. | Premium Computer Hardware & Tech Solutions</p>
+      </footer>
+    </template>
+
+    <script src="./js/include.js" defer></script>
+    <script src="./fontawesome-free-6.6.0-web/js/all.min.js"></script>
+    </body>
+    </html>

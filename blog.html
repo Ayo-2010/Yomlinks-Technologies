@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog - Yomlinks | Hardware Guides, Tips & Industry Insights</title>
+    <meta name="description" content="Expert articles on PC building, gaming, hardware reviews, optimization tips, and latest tech industry trends. Stay updated with Yomlinks blog.">
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="http://example.com/blog.html">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Blog","name":"Yomlinks Tech Blog","url":"http://example.com/blog.html","publisher":{"@type":"Organization","name":"Yomlinks","logo":{"@type":"ImageObject","url":"http://example.com/images/favicon.svg"}}}
+    </script>
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="./js/theme.js"></script>
+    <script src="./js/active-link.js"></script>
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        /* Blog Specific Styles */
+        .blog-hero {
+            background: linear-gradient(135deg, var(--secondary-bg), var(--tertiary-bg));
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .blog-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .blog-hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .blog-container {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background-color: var(--primary-bg);
+        }
+
+        .blog-articles {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .blog-post-item {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: var(--spacing-lg);
+            padding: var(--spacing-lg);
+        }
+
+        .blog-post-item:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.15);
+        }
+
+        .blog-post-image {
+            width: 100%;
+            height: 220px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background-color: var(--tertiary-bg);
+        }
+
+        .blog-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .blog-post-item:hover .blog-post-image img {
+            transform: scale(1.08);
+        }
+
+        .blog-post-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .blog-post-header {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .blog-post-category {
+            display: inline-block;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .blog-post-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.4;
+        }
+
+        .blog-post-meta {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .blog-meta-item i {
+            color: var(--accent-color);
+        }
+
+        .blog-post-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .blog-post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .blog-author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .blog-author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-author-info {
+            font-size: 0.9rem;
+        }
+
+        .blog-author-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .blog-author-role {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .blog-read-more {
+            color: var(--accent-color);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Sidebar */
+        .blog-sidebar {
+            height: fit-content;
+            position: sticky;
+            top: 90px;
+        }
+
+        .sidebar-widget {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .sidebar-widget h3 {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+
+        .sidebar-widget ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-widget li {
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar-widget li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .sidebar-widget a {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .sidebar-widget a:hover {
+            color: var(--accent-color);
+        }
+
+        .sidebar-widget .read-time {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: var(--spacing-sm);
+        }
+
+        .search-widget {
+            position: relative;
+        }
+
+        .search-widget input {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--tertiary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .search-widget input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-widget input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .tag-badge {
+            background-color: var(--tertiary-bg);
+            color: var(--accent-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .tag-badge:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border-color: var(--accent-color);
+        }
+
+        /* Featured Post */
+        .featured-post {
+            background: linear-gradient(135deg, var(--secondary-bg), var(--tertiary-bg));
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            margin-bottom: var(--spacing-2xl);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .featured-post-image {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            overflow: hidden;
+        }
+
+        .featured-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-post-content {
+            padding: var(--spacing-lg);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .featured-post-content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 1024px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-sidebar {
+                position: static;
+            }
+
+            .blog-post-item {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-post-image {
+                height: 280px;
+            }
+
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-hero {
+                min-height: 300px;
+                padding: var(--spacing-lg);
+            }
+
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-post-title {
+                font-size: 1.2rem;
+            }
+
+            .blog-post-meta {
+                font-size: 0.85rem;
+                gap: var(--spacing-md);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-post-item {
+                padding: var(--spacing-md);
+            }
+
+            .blog-post-image {
+                height: 200px;
+            }
+
+            .blog-post-title {
+                font-size: 1.1rem;
+            }
+
+            .featured-post-content {
+                padding: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hybrid includes: tries external files first, falls back to embedded templates -->
+    <div data-include="includes/header.html" data-include-id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Tech Blog & Insights</h1>
+            <p>Expert articles, guides, and industry insights on computer hardware, gaming, optimization, and professional tech solutions</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <div class="container">
+        <div class="blog-container">
+            <!-- Main Blog Articles -->
+            <div class="blog-articles">
+                <!-- Featured Post -->
+                <article class="featured-post">
+                    <div class="featured-post-image">
+                        <img src="./images/gamingpc.webp" alt="Ultimate Guide to Gaming PC Building">
+                    </div>
+                    <div class="featured-post-content">
+                        <span class="featured-badge">Featured Article</span>
+                        <h2>The Ultimate Guide to Building Your First Gaming PC in 2024</h2>
+                        <div class="blog-post-meta">
+                            <div class="blog-meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>December 10, 2024</span>
+                            </div>
+                            <div class="blog-meta-item">
+                                <i class="fas fa-user"></i>
+                                <span>By Abdullah Abdulwahab</span>
+                            </div>
+                            <div class="blog-meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>15 min read</span>
+                            </div>
+                        </div>
+                        <p class="blog-post-excerpt">A comprehensive step-by-step guide covering component selection, assembly, BIOS configuration, and optimization. Whether you're building your first PC or upgrading, this guide covers everything you need to know.</p>
+                        <a href="./blog-gaming-pc-building.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); font-weight: 600;">Read Full Article <i class="fas fa-arrow-right" style="margin-left: var(--spacing-sm);"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 1 -->
+                <article class="blog-post-item">
+                    <div class="blog-post-image">
+                        <img src="./images/monitor.avif" alt="GPU Performance Optimization">
+                    </div>
+                    <div class="blog-post-content">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Performance</span>
+                            <h3 class="blog-post-title">Maximizing GPU Performance: Advanced Optimization Techniques</h3>
+                            <div class="blog-post-meta">
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>December 8, 2024</span>
+                                </div>
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>12 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="blog-post-excerpt">Discover advanced techniques to push your GPU to its limits. From driver optimization to power settings, learn the secrets that professional overclockers use to achieve peak performance while maintaining stability.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="./images/employee1.webp" alt="Abdullah">
+                                </div>
+                                <div class="blog-author-info">
+                                    <div class="blog-author-name">Abdullah Abdulwahab</div>
+                                    <div class="blog-author-role">Hardware Expert</div>
+                                </div>
+                            </div>
+                            <a href="./blog-gpu-optimization.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">Read More →</a>
+                            </div>
+                            </div>
+                            </article>
+
+                            <!-- Blog Post 2 -->
+                            <article class="blog-post-item">
+                            <div class="blog-post-image">
+                            <img src="./images/keyboard.avif" alt="PC Cooling Solutions">
+                    </div>
+                    <div class="blog-post-content">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Maintenance</span>
+                            <h3 class="blog-post-title">Air vs Liquid Cooling: Which Is Right For You?</h3>
+                            <div class="blog-post-meta">
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>December 5, 2024</span>
+                                </div>
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>10 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="blog-post-excerpt">A detailed comparison of air and liquid cooling solutions. We break down the pros, cons, costs, and maintenance requirements to help you choose the perfect cooling solution for your build.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="./images/employee2.webp" alt="Abdulquadri">
+                                </div>
+                                <div class="blog-author-info">
+                                    <div class="blog-author-name">Abdulquadri Umar</div>
+                                    <div class="blog-author-role">Tech Specialist</div>
+                                </div>
+                            </div>
+                            <a href="./blog-cooling-solutions.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">Read More →</a>
+                            </div>
+                            </div>
+                            </article>
+
+                            <!-- Blog Post 3 -->
+                            <article class="blog-post-item">
+                            <div class="blog-post-image">
+                            <img src="./images/techback2.webp" alt="Storage Solutions">
+                    </div>
+                    <div class="blog-post-content">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Storage</span>
+                            <h3 class="blog-post-title">SSD vs HDD: Understanding Modern Storage Technology</h3>
+                            <div class="blog-post-meta">
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>December 1, 2024</span>
+                                </div>
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>11 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="blog-post-excerpt">Learn the differences between SSDs and HDDs, their performance characteristics, and how to choose the right storage solution for gaming, content creation, or everyday use. Includes detailed benchmark comparisons.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="./images/employee3.webp" alt="Muziab">
+                                </div>
+                                <div class="blog-author-info">
+                                    <div class="blog-author-name">Muziab Abdulwahab</div>
+                                    <div class="blog-author-role">Storage Specialist</div>
+                                </div>
+                            </div>
+                            <a href="./blog-storage-technology.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">Read More →</a>
+                            </div>
+                            </div>
+                            </article>
+
+                            <!-- Blog Post 4 -->
+                            <article class="blog-post-item">
+                            <div class="blog-post-image">
+                            <img src="./images/hig-performance-laptop.avif" alt="Workstation Setup">
+                    </div>
+                    <div class="blog-post-content">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Professional</span>
+                            <h3 class="blog-post-title">Building the Perfect Content Creator Workstation</h3>
+                            <div class="blog-post-meta">
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>November 28, 2024</span>
+                                </div>
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>14 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="blog-post-excerpt">Professional recommendations for building a workstation optimized for video editing, 3D rendering, and content creation. Includes component recommendations, budget breakdowns, and software optimization tips.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="./images/employee1.webp" alt="Abdullah">
+                                </div>
+                                <div class="blog-author-info">
+                                    <div class="blog-author-name">Abdullah Abdulwahab</div>
+                                    <div class="blog-author-role">Hardware Expert</div>
+                                </div>
+                            </div>
+                            <a href="./blog-content-creator-workstation.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">Read More →</a>
+                            </div>
+                            </div>
+                            </article>
+
+                            <!-- Blog Post 5 -->
+                            <article class="blog-post-item">
+                            <div class="blog-post-image">
+                            <img src="./images/remote-support.avif" alt="PC Troubleshooting">
+                    </div>
+                    <div class="blog-post-content">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Troubleshooting</span>
+                            <h3 class="blog-post-title">Common PC Problems and Their Solutions: A Complete Troubleshooting Guide</h3>
+                            <div class="blog-post-meta">
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>November 25, 2024</span>
+                                </div>
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>13 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="blog-post-excerpt">Comprehensive guide to diagnosing and fixing common PC issues. From blue screens to performance degradation, learn the systematic approach professionals use to identify and resolve hardware and software problems.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="./images/employee2.webp" alt="Abdulquadri">
+                                </div>
+                                <div class="blog-author-info">
+                                    <div class="blog-author-name">Abdulquadri Umar</div>
+                                    <div class="blog-author-role">Tech Specialist</div>
+                                </div>
+                            </div>
+                            <a href="./blog-pc-troubleshooting.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">Read More →</a>
+                            </div>
+                            </div>
+                            </article>
+
+                            <!-- Blog Post 6 -->
+                            <article class="blog-post-item">
+                            <div class="blog-post-image">
+                            <img src="./images/techback3.avif" alt="Network Optimization">
+                    </div>
+                    <div class="blog-post-content">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Networking</span>
+                            <h3 class="blog-post-title">Optimizing Your Network for Gaming: Low Latency and High Speed</h3>
+                            <div class="blog-post-meta">
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>November 22, 2024</span>
+                                </div>
+                                <div class="blog-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>9 min</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="blog-post-excerpt">Advanced networking configuration tips to reduce latency and maximize bandwidth for gaming. Covers router settings, DNS optimization, QoS configuration, and hardware recommendations for competitive advantage.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">
+                                    <img src="./images/employee3.webp" alt="Muziab">
+                                </div>
+                                <div class="blog-author-info">
+                                    <div class="blog-author-name">Muziab Abdulwahab</div>
+                                    <div class="blog-author-role">Networking Expert</div>
+                                </div>
+                            </div>
+                            <a href="./blog-network-gaming.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); font-weight: 600; text-decoration: none;">Read More →</a>
+                            </div>
+                            </div>
+                            </article>
+                            </div>
+
+            <!-- Sidebar -->
+            <aside class="blog-sidebar">
+                <!-- Search Widget -->
+                <div class="sidebar-widget search-widget">
+                    <input type="text" placeholder="Search articles..." />
+                </div>
+
+                <!-- Recent Posts -->
+                <div class="sidebar-widget">
+                    <h3>Recent Articles</h3>
+                    <ul>
+                         <li>
+                             <a href="./blog-gaming-pc-building.html" target="_blank" rel="noopener noreferrer">The Ultimate Guide to Building Your First Gaming PC in 2024</a>
+                             <div class="read-time"><i class="fas fa-clock"></i> 15 min</div>
+                         </li>
+                         <li>
+                             <a href="./blog-gpu-optimization.html" target="_blank" rel="noopener noreferrer">Maximizing GPU Performance: Advanced Optimization Techniques</a>
+                             <div class="read-time"><i class="fas fa-clock"></i> 12 min</div>
+                         </li>
+                         <li>
+                             <a href="./blog-cooling-solutions.html" target="_blank" rel="noopener noreferrer">Air vs Liquid Cooling: Which Is Right For You?</a>
+                             <div class="read-time"><i class="fas fa-clock"></i> 10 min</div>
+                         </li>
+                         <li>
+                             <a href="./blog-storage-technology.html" target="_blank" rel="noopener noreferrer">SSD vs HDD: Understanding Modern Storage Technology</a>
+                             <div class="read-time"><i class="fas fa-clock"></i> 11 min</div>
+                         </li>
+                     </ul>
+                </div>
+
+                <!-- Categories -->
+                <div class="sidebar-widget">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#">Hardware Reviews (24)</a></li>
+                        <li><a href="#">Performance (18)</a></li>
+                        <li><a href="#">Gaming (32)</a></li>
+                        <li><a href="#">Professional (15)</a></li>
+                        <li><a href="#">Troubleshooting (21)</a></li>
+                        <li><a href="#">Optimization (19)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Popular Tags -->
+                <div class="sidebar-widget">
+                    <h3>Popular Tags</h3>
+                    <div class="tags-list">
+                        <span class="tag-badge">PC Building</span>
+                        <span class="tag-badge">Gaming</span>
+                        <span class="tag-badge">GPU</span>
+                        <span class="tag-badge">CPU</span>
+                        <span class="tag-badge">Cooling</span>
+                        <span class="tag-badge">Storage</span>
+                        <span class="tag-badge">Performance</span>
+                        <span class="tag-badge">Network</span>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="sidebar-widget" style="background: linear-gradient(135deg, var(--secondary-bg), var(--tertiary-bg)); border-color: var(--accent-color);">
+                    <h3 style="color: var(--accent-color);">Subscribe to Updates</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: var(--spacing-md);">Get the latest tech articles delivered to your inbox weekly.</p>
+                    <form style="display: flex; flex-direction: column; gap: var(--spacing-sm);">
+                        <input type="email" placeholder="Your email..." style="padding: 0.75rem; background-color: var(--primary-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; color: var(--text-primary); font-size: 0.9rem;" required>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem;">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <div data-include="includes/footer.html" data-include-id="footer"></div>
+
+    <!-- Embedded fallback templates for offline/file:// access -->
+    <template id="include-template-header">
+      <header id="nav">
+        <div class="left-nav">
+          <a href="./index.html" title="Yomlinks Home" class="logo-link"><img src="./images/YomlinksLogo.jpg" alt="Yomlinks logo" loading="lazy"></a>
+        </div>
+        <div class="right-nav">
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="./shop.html" class="nav-link">Shop</a>
+            <a href="./training.html" class="nav-link">Courses</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./contact.html" class="nav-link">Contact</a>
+          </nav>
+          <div class="theme-switcher" role="region" aria-label="Theme switcher">
+            <button 
+              class="theme-toggle" 
+              id="themeToggle" 
+              type="button" 
+              title="Switch to light mode"
+              aria-label="Toggle dark/light theme"
+              aria-checked="false"
+              role="switch">
+              <span class="icon-moon" aria-hidden="true"><i class="fas fa-moon"></i></span>
+              <span class="slider" aria-hidden="true"></span>
+              <span class="icon-sun" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            </button>
+          </div>
+          <a href="./shop.html" title="Shopping Cart" class="cart-icon" aria-label="Open shopping cart"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </header>
+    </template>
+
+    <template id="include-template-footer">
+      <div class="footer">
+        <div class="sub-foot">
+          <h4>Location</h4>
+          <p>Agbede, Ikorodu</p>
+          <p>Lagos, Nigeria</p>
+        </div>
+        <div class="sub-foot">
+          <h4>Contact</h4>
+          <a href="mailto:email@contact.com">ayoabdullah13.com</a>
+          <a href="tel:+07045033528">+07045033528</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Company</h4>
+          <a href="./index.html">About Us</a>
+          <a href="./services.html">Services</a>
+          <a href="./shop.html">Products</a>
+          <a href="./blog.html">Blog</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Support</h4>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">FAQ</a>
+          <a href="#">Track Order</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Legal</h4>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <p>© <span id="year"></span> Yomlinks. All rights reserved. | Premium Computer Hardware & Tech Solutions</p>
+      </footer>
+    </template>
+
+    <script src="./js/include.js" defer></script>
+    <script src="./fontawesome-free-6.6.0-web/js/all.min.js"></script>
+</body>
+</html>

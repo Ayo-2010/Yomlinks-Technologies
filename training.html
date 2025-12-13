@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Platform - Apply for Courses & Track Progress</title>
+    <meta name="description" content="Professional training platform with course applications, enrollment tracking, and program history. Enroll in courses and track your learning progress.">
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="http://example.com/training.html">
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <script src="./js/theme.js"></script>
+    <script src="./js/active-link.js"></script>
+    <style>
+        /* Training Platform Enhanced Styles */
+        .training-hero {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .training-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .training-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .training-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .training-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        .training-cta {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* User Status Bar */
+        .user-status-bar {
+            background-color: var(--secondary-bg);
+            padding: var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #00a8cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-bg);
+            font-size: 1.5rem;
+        }
+
+        .user-details h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .user-details p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        /* Stats Section */
+        .training-stats {
+            background-color: var(--secondary-bg);
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Navigation Tabs */
+        .training-tabs {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background-color: var(--secondary-bg);
+            border-bottom: 1px solid var(--border-color);
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--primary-bg);
+        }
+
+        /* Available Courses Section */
+        .training-categories {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background-color: var(--primary-bg);
+        }
+
+        .training-categories h2 {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .category-filters {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--primary-bg);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .course-card {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .course-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--tertiary-bg), var(--secondary-bg));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.08);
+        }
+
+        .course-level {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .course-status {
+            position: absolute;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            background: var(--success-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .course-body {
+            padding: var(--spacing-lg);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-category {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .course-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.4;
+        }
+
+        .course-instructor {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .instructor-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .instructor-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .course-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+            flex-grow: 1;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--border-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .course-duration {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .course-students {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .course-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .course-price-period {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .apply-btn, .enroll-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .apply-btn:hover, .enroll-btn:hover {
+            background-color: var(--accent-dark);
+            transform: translateX(4px);
+        }
+
+        .applied-btn {
+            background-color: var(--success-color);
+            cursor: not-allowed;
+        }
+
+        .applied-btn:hover {
+            background-color: var(--success-color);
+            transform: none;
+        }
+
+        /* Progress Section */
+        .progress-container {
+            margin-top: var(--spacing-md);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: var(--tertiary-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-color), #00a8cc);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* Past Programs Section */
+        .past-programs {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background-color: var(--secondary-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .past-programs h2 {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .program-card {
+            background-color: var(--tertiary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: var(--spacing-lg);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .program-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 35px rgba(0, 217, 255, 0.1);
+        }
+
+        .completion-badge {
+            position: absolute;
+            top: var(--spacing-lg);
+            right: var(--spacing-lg);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--success-color), #10b981);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .program-card h3 {
+            margin-top: 0;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.2rem;
+        }
+
+        .program-meta {
+            display: flex;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .program-meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .program-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .completion-percentage {
+            text-align: center;
+            padding: var(--spacing-md);
+            background-color: rgba(16, 185, 129, 0.1);
+            border-radius: 0.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .completion-percentage h4 {
+            margin: 0;
+            color: var(--success-color);
+            font-size: 2rem;
+        }
+
+        .certificate-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .certificate-btn:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: var(--spacing-2xl);
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: var(--spacing-lg);
+        }
+
+        .modal-header h2 {
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--accent-color);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            background-color: var(--tertiary-bg);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: var(--font-primary);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: flex-end;
+            margin-top: var(--spacing-lg);
+        }
+
+        .btn-cancel {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--tertiary-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-cancel:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-submit {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+
+        .success-message {
+            display: none;
+            padding: var(--spacing-md);
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success-color);
+            border-radius: 0.5rem;
+            color: var(--success-color);
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: var(--spacing-2xl) var(--spacing-lg);
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .empty-state h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .empty-state p {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .training-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .training-hero p {
+                font-size: 1rem;
+            }
+
+            .courses-grid,
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .course-meta {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                align-items: flex-start;
+            }
+
+            .modal-content {
+                padding: var(--spacing-lg);
+            }
+
+            .user-status-bar {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+
+            .user-actions {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .training-hero {
+                min-height: 350px;
+            }
+
+            .training-hero h1 {
+                font-size: 2rem;
+            }
+
+            .training-cta {
+                flex-direction: column;
+            }
+
+            .training-cta .btn {
+                width: 100%;
+            }
+
+            .tab-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hybrid includes: tries external files first, falls back to embedded templates -->
+    <div data-include="includes/header.html" data-include-id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="training-hero">
+        <div class="training-hero-content">
+            <h1>Master Your Skills with Professional Training</h1>
+            <p>Learn from industry experts. Comprehensive courses designed to take you from beginner to professional. Apply now and track your progress.</p>
+            <div class="training-cta">
+                <button class="btn btn-primary btn-large" onclick="document.querySelector('.training-tabs').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-book"></i> Browse Courses
+                </button>
+                <button class="btn btn-secondary btn-large" onclick="viewPastPrograms()">
+                    <i class="fas fa-history"></i> My Progress
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Status Bar -->
+    <div class="user-status-bar">
+        <div class="user-info">
+            <div class="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="user-details">
+                <h3 id="userName">Welcome Student</h3>
+                <p id="userStatus">Not logged in • No active courses</p>
+            </div>
+        </div>
+        <div class="user-actions">
+            <button class="btn btn-secondary" onclick="showLoginModal()" id="loginBtn">
+                <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+            <button class="btn btn-secondary" onclick="showProfileModal()" id="profileBtn" style="display:none;">
+                <i class="fas fa-user-circle"></i> My Profile
+            </button>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <section class="training-stats">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Professional Courses</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Expert Instructors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">Active Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Satisfaction Rate</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="training-tabs">
+        <button class="tab-btn active" onclick="switchTab('available')">
+            <i class="fas fa-book-open"></i> Available Courses
+        </button>
+        <button class="tab-btn" onclick="switchTab('enrolled')">
+            <i class="fas fa-graduation-cap"></i> My Enrollments
+        </button>
+        <button class="tab-btn" onclick="switchTab('completed')">
+            <i class="fas fa-certificate"></i> Completed Programs
+        </button>
+    </div>
+
+    <!-- Available Courses Section -->
+    <section class="training-categories" id="availableSection">
+        <div class="container">
+            <h2><i class="fas fa-compass"></i> Explore Available Courses</h2>
+            
+            <div class="category-filters">
+                <button class="filter-btn active" onclick="filterCourses('all')">All Courses</button>
+                <button class="filter-btn" onclick="filterCourses('hardware')">Hardware</button>
+                <button class="filter-btn" onclick="filterCourses('software')">Software</button>
+                <button class="filter-btn" onclick="filterCourses('professional')">Professional</button>
+                <button class="filter-btn" onclick="filterCourses('beginner')">Beginner</button>
+            </div>
+
+            <div class="courses-grid" id="coursesList">
+                <!-- Courses will be dynamically populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrolled Courses Section -->
+    <section class="training-categories" id="enrolledSection" style="display:none;">
+        <div class="container">
+            <h2><i class="fas fa-graduation-cap"></i> Your Enrolled Courses</h2>
+            
+            <div class="courses-grid" id="enrolledList">
+                <div class="empty-state">
+                    <div class="empty-state-icon"><i class="fas fa-inbox"></i></div>
+                    <h3>No Enrolled Courses Yet</h3>
+                    <p>You haven't enrolled in any courses. Browse available courses to get started!</p>
+                    <button class="btn btn-primary" onclick="switchTab('available')">Browse Courses</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Completed Programs Section -->
+    <section class="past-programs" id="completedSection" style="display:none;">
+        <div class="container">
+            <h2><i class="fas fa-certificate"></i> Completed Programs</h2>
+            
+            <div class="programs-grid" id="completedList">
+                <div class="empty-state">
+                    <div class="empty-state-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>No Completed Programs Yet</h3>
+                    <p>Once you complete a course, your certificate will appear here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section style="padding: var(--spacing-2xl) var(--spacing-lg); background-color: var(--secondary-bg); border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--spacing-2xl);">Meet Our Expert Instructors</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg); max-width: 1400px; margin: 0 auto;">
+                <div style="background-color: var(--tertiary-bg); border: 1px solid var(--border-color); border-radius: 0.75rem; padding: var(--spacing-lg); text-align: center; transition: var(--transition);" class="instructor-card-hover">
+                    <img src="./images/employee1.webp" alt="Abdullah Abdulwahab" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--spacing-md); border: 3px solid var(--border-color);">
+                    <h3>Abdullah Abdulwahab</h3>
+                    <div style="color: var(--accent-color); font-weight: 600; font-size: 0.9rem; margin-bottom: var(--spacing-md); text-transform: uppercase;">Hardware Expert</div>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--spacing-md);">10+ years of experience in hardware engineering and PC building. Certified technician with expertise in performance optimization.</p>
+                </div>
+
+                <div style="background-color: var(--tertiary-bg); border: 1px solid var(--border-color); border-radius: 0.75rem; padding: var(--spacing-lg); text-align: center; transition: var(--transition);" class="instructor-card-hover">
+                    <img src="./images/employee2.webp" alt="Abdulquadri Umar" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--spacing-md); border: 3px solid var(--border-color);">
+                    <h3>Abdulquadri Umar</h3>
+                    <div style="color: var(--accent-color); font-weight: 600; font-size: 0.9rem; margin-bottom: var(--spacing-md); text-transform: uppercase;">Tech Specialist</div>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--spacing-md);">Expert in software optimization and system performance. Passionate about teaching the latest technologies and best practices.</p>
+                </div>
+
+                <div style="background-color: var(--tertiary-bg); border: 1px solid var(--border-color); border-radius: 0.75rem; padding: var(--spacing-lg); text-align: center; transition: var(--transition);" class="instructor-card-hover">
+                    <img src="./images/employee3.webp" alt="Muziab Abdulwahab" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--spacing-md); border: 3px solid var(--border-color);">
+                    <h3>Muziab Abdulwahab</h3>
+                    <div style="color: var(--accent-color); font-weight: 600; font-size: 0.9rem; margin-bottom: var(--spacing-md); text-transform: uppercase;">Professional Trainer</div>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--spacing-md);">Specializes in professional workstation setup and content creation. Mentors students to achieve their career goals in tech.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Apply for Course</h2>
+                <button class="modal-close" onclick="closeModal('applicationModal')">&times;</button>
+            </div>
+            
+            <div id="courseDetails" style="margin-bottom: var(--spacing-lg);">
+                <h3 id="courseTitle"></h3>
+                <p id="courseInfo" style="color: var(--text-secondary);"></p>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i> Successfully enrolled! Welcome to the course.
+            </div>
+
+            <form id="applicationForm" onsubmit="submitApplication(event)">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+234 (0) 800 123 4567">
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Experience Level *</label>
+                    <select id="experience" name="experience" required>
+                        <option value="">Select your experience level</option>
+                        <option value="beginner">Beginner - No prior experience</option>
+                        <option value="intermediate">Intermediate - Some experience</option>
+                        <option value="advanced">Advanced - Extensive experience</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="motivation">Why are you interested in this course? *</label>
+                    <textarea id="motivation" name="motivation" required placeholder="Tell us what motivates you to take this course..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="availability">Expected Time Commitment per Week *</label>
+                    <select id="availability" name="availability" required>
+                        <option value="">Select your availability</option>
+                        <option value="5">5 hours per week</option>
+                        <option value="10">10 hours per week</option>
+                        <option value="15">15 hours per week</option>
+                        <option value="20">20+ hours per week</option>
+                    </select>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal('applicationModal')">Cancel</button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-check"></i> Submit Application
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sign In to Your Account</h2>
+                <button class="modal-close" onclick="closeModal('loginModal')">&times;</button>
+            </div>
+
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" name="loginEmail" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="loginPassword" required placeholder="••••••••">
+                </div>
+
+                <div class="form-group" style="display: flex; align-items: center; flex-direction: row; gap: var(--spacing-sm);">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe" style="margin: 0;">Remember me</label>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal('loginModal')">Cancel</button>
+                    <button type="submit" class="btn-submit">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My Profile</h2>
+                <button class="modal-close" onclick="closeModal('profileModal')">&times;</button>
+            </div>
+
+            <div style="padding: var(--spacing-lg); background-color: var(--tertiary-bg); border-radius: 0.75rem; margin-bottom: var(--spacing-lg);">
+                <div style="display: flex; align-items: center; gap: var(--spacing-lg); margin-bottom: var(--spacing-lg);">
+                    <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-color), #00a8cc); display: flex; align-items: center; justify-content: center; color: var(--primary-bg); font-size: 2rem;">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h3 id="profileName" style="margin: 0;">John Doe</h3>
+                        <p id="profileEmail" style="margin: 0; color: var(--text-secondary);">john@example.com</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md);">
+                    <div>
+                        <div style="font-size: 0.9rem; color: var(--text-secondary);">Enrolled Courses</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--accent-color);" id="enrolledCount">0</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.9rem; color: var(--text-secondary);">Completed Courses</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--success-color);" id="completedCount">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" onclick="handleLogout()">Log Out</button>
+                <button type="button" class="btn-submit" onclick="closeModal('profileModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div data-include="includes/footer.html" data-include-id="footer"></div>
+
+    <!-- Embedded fallback templates for offline/file:// access -->
+    <template id="include-template-header">
+      <header id="nav">
+        <div class="left-nav">
+          <a href="./index.html" title="Yomlinks Home" class="logo-link"><img src="./images/YomlinksLogo.jpg" alt="Yomlinks logo" loading="lazy"></a>
+        </div>
+        <div class="right-nav">
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="./shop.html" class="nav-link">Shop</a>
+            <a href="./training.html" class="nav-link">Courses</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./contact.html" class="nav-link">Contact</a>
+          </nav>
+          <div class="theme-switcher" role="region" aria-label="Theme switcher">
+            <button 
+              class="theme-toggle" 
+              id="themeToggle" 
+              type="button" 
+              title="Switch to light mode"
+              aria-label="Toggle dark/light theme"
+              aria-checked="false"
+              role="switch">
+              <span class="icon-moon" aria-hidden="true"><i class="fas fa-moon"></i></span>
+              <span class="slider" aria-hidden="true"></span>
+              <span class="icon-sun" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            </button>
+          </div>
+          <a href="./shop.html" title="Shopping Cart" class="cart-icon" aria-label="Open shopping cart"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </header>
+    </template>
+
+    <template id="include-template-footer">
+      <div class="footer">
+        <div class="sub-foot">
+          <h4>Location</h4>
+          <p>Agbede, Ikorodu</p>
+          <p>Lagos, Nigeria</p>
+        </div>
+        <div class="sub-foot">
+          <h4>Contact</h4>
+          <a href="mailto:email@contact.com">ayoabdullah13.com</a>
+          <a href="tel:+07045033528">+07045033528</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Company</h4>
+          <a href="./index.html">About Us</a>
+          <a href="./services.html">Services</a>
+          <a href="./shop.html">Products</a>
+          <a href="./blog.html">Blog</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Support</h4>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">FAQ</a>
+          <a href="#">Track Order</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Legal</h4>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <p>© <span id="year"></span> Yomlinks. All rights reserved. | Premium Computer Hardware & Tech Solutions</p>
+      </footer>
+    </template>
+
+    <script src="./js/include.js" defer></script>
+    <script src="./fontawesome-free-6.6.0-web/js/all.min.js"></script>
+    <script>
+        // Course data
+        const coursesData = [
+            {
+                id: 1,
+                title: "Advanced PC Building Masterclass",
+                category: "hardware",
+                level: "Advanced",
+                instructor: "Abdullah Abdulwahab",
+                instructorImg: "./images/employee1.webp",
+                description: "Master the art of building high-performance computers. Learn component selection, assembly, cooling optimization, and troubleshooting.",
+                image: "./images/gamingpc.webp",
+                price: 499,
+                duration: "12 weeks",
+                students: 234
+            },
+            {
+                id: 2,
+                title: "GPU Optimization Pro",
+                category: "software",
+                level: "Intermediate",
+                instructor: "Abdulquadri Umar",
+                instructorImg: "./images/employee2.webp",
+                description: "Learn advanced GPU optimization techniques. From driver tuning to power management and overclocking.",
+                image: "./images/monitor.avif",
+                price: 349,
+                duration: "8 weeks",
+                students: 156
+            },
+            {
+                id: 3,
+                title: "Cooling Systems Masterclass",
+                category: "hardware",
+                level: "Intermediate",
+                instructor: "Abdullah Abdulwahab",
+                instructorImg: "./images/employee1.webp",
+                description: "Complete guide to air and liquid cooling. Installation, maintenance, and performance tuning.",
+                image: "./images/keyboard.avif",
+                price: 299,
+                duration: "6 weeks",
+                students: 189
+            },
+            {
+                id: 4,
+                title: "Content Creator Workstation",
+                category: "professional",
+                level: "Advanced",
+                instructor: "Muziab Abdulwahab",
+                instructorImg: "./images/employee3.webp",
+                description: "Build and optimize workstations for video editing, 3D rendering, and content creation.",
+                image: "./images/hig-performance-laptop.avif",
+                price: 599,
+                duration: "10 weeks",
+                students: 267
+            },
+            {
+                id: 5,
+                title: "Storage Solutions Guide",
+                category: "beginner",
+                level: "Beginner",
+                instructor: "Abdulquadri Umar",
+                instructorImg: "./images/employee2.webp",
+                description: "Understand SSDs, HDDs, and modern storage technology. Selection, installation, and optimization.",
+                image: "./images/techback2.webp",
+                price: 199,
+                duration: "4 weeks",
+                students: 312
+            },
+            {
+                id: 6,
+                title: "PC Troubleshooting Pro",
+                category: "software",
+                level: "Intermediate",
+                instructor: "Muziab Abdulwahab",
+                instructorImg: "./images/employee3.webp",
+                description: "Systematic approach to diagnosing and fixing PC issues. Professional methodologies.",
+                image: "./images/remote-support.avif",
+                price: 279,
+                duration: "7 weeks",
+                students: 198
+            }
+        ];
+
+        // User data
+        let currentUser = null;
+        let userEnrollments = [];
+        let userCompleted = [];
+
+        // Initialize
+        loadUserData();
+        displayCourses('all');
+
+        // Load user data from localStorage
+        function loadUserData() {
+            const saved = localStorage.getItem('currentUser');
+            if (saved) {
+                currentUser = JSON.parse(saved);
+                userEnrollments = JSON.parse(localStorage.getItem('userEnrollments') || '[]');
+                userCompleted = JSON.parse(localStorage.getItem('userCompleted') || '[]');
+                updateUserUI();
+            }
+        }
+
+        // Update user UI
+        function updateUserUI() {
+            if (currentUser) {
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userStatus').textContent = `${userEnrollments.length} active course(s) • ${userCompleted.length} completed`;
+                document.getElementById('loginBtn').style.display = 'none';
+                document.getElementById('profileBtn').style.display = 'inline-flex';
+                document.getElementById('profileName').textContent = currentUser.name;
+                document.getElementById('profileEmail').textContent = currentUser.email;
+                document.getElementById('enrolledCount').textContent = userEnrollments.length;
+                document.getElementById('completedCount').textContent = userCompleted.length;
+            }
+        }
+
+        // Display courses
+        function displayCourses(filter = 'all') {
+            const coursesList = document.getElementById('coursesList');
+            const filtered = filter === 'all' ? coursesData : coursesData.filter(c => c.category === filter);
+            
+            coursesList.innerHTML = filtered.map(course => {
+                const isEnrolled = userEnrollments.includes(course.id);
+                return `
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="${course.image}" alt="${course.title}">
+                            <span class="course-level">${course.level}</span>
+                            ${isEnrolled ? '<span class="course-status">✓ Enrolled</span>' : ''}
+                        </div>
+                        <div class="course-body">
+                            <span class="course-category">${course.category.toUpperCase()}</span>
+                            <h3 class="course-title">${course.title}</h3>
+                            <div class="course-instructor">
+                                <div class="instructor-avatar">
+                                    <img src="${course.instructorImg}" alt="${course.instructor}">
+                                </div>
+                                <span>${course.instructor}</span>
+                            </div>
+                            <p class="course-description">${course.description}</p>
+                            <div class="course-meta">
+                                <div class="course-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <span>${course.duration}</span>
+                                </div>
+                                <div class="course-students">
+                                    <i class="fas fa-users"></i>
+                                    <span>${course.students} students</span>
+                                </div>
+                            </div>
+                            <div class="course-footer">
+                                <div>
+                                    <div class="course-price">$${course.price}</div>
+                                    <div class="course-price-period">lifetime access</div>
+                                </div>
+                                ${isEnrolled 
+                                    ? '<button class="apply-btn applied-btn" disabled><i class="fas fa-check"></i> Enrolled</button>'
+                                    : `<button class="apply-btn" onclick="openApplicationModal(${course.id}, '${course.title}')"><i class="fas fa-paper-plane"></i> Apply Now</button>`
+                                }
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filter courses
+        function filterCourses(filter) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            displayCourses(filter);
+        }
+
+        // Switch tabs
+        function switchTab(tab) {
+            document.querySelectorAll('[id$="Section"]').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tab + 'Section').style.display = 'block';
+            
+            if (tab === 'enrolled') displayEnrolledCourses();
+            if (tab === 'completed') displayCompletedPrograms();
+        }
+
+        // Display enrolled courses
+        function displayEnrolledCourses() {
+            const enrolledList = document.getElementById('enrolledList');
+            if (userEnrollments.length === 0) {
+                enrolledList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon"><i class="fas fa-inbox"></i></div>
+                        <h3>No Enrolled Courses Yet</h3>
+                        <p>You haven't enrolled in any courses. Browse available courses to get started!</p>
+                        <button class="btn btn-primary" onclick="switchTab('available')">Browse Courses</button>
+                    </div>
+                `;
+                return;
+            }
+
+            enrolledList.innerHTML = userEnrollments.map(enrolledId => {
+                const course = coursesData.find(c => c.id === enrolledId);
+                const progress = Math.floor(Math.random() * 70) + 10;
+                return `
+                    <div class="course-card">
+                        <div class="course-image">
+                            <img src="${course.image}" alt="${course.title}">
+                            <span class="course-level">${course.level}</span>
+                        </div>
+                        <div class="course-body">
+                            <span class="course-category">${course.category.toUpperCase()}</span>
+                            <h3 class="course-title">${course.title}</h3>
+                            <div class="course-instructor">
+                                <div class="instructor-avatar">
+                                    <img src="${course.instructorImg}" alt="${course.instructor}">
+                                </div>
+                                <span>${course.instructor}</span>
+                            </div>
+                            <p class="course-description">${course.description}</p>
+                            
+                            <div class="progress-container">
+                                <div class="progress-label">
+                                    <span>Course Progress</span>
+                                    <span>${progress}%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: ${progress}%"></div>
+                                </div>
+                            </div>
+
+                            <div class="course-meta" style="margin-top: var(--spacing-md);">
+                                <div class="course-duration">
+                                    <i class="fas fa-clock"></i>
+                                    <span>${course.duration}</span>
+                                </div>
+                                <div class="course-students">
+                                    <i class="fas fa-users"></i>
+                                    <span>${course.students} students</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Display completed programs
+        function displayCompletedPrograms() {
+            const completedList = document.getElementById('completedList');
+            if (userCompleted.length === 0) {
+                completedList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>No Completed Programs Yet</h3>
+                        <p>Once you complete a course, your certificate will appear here.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            completedList.innerHTML = userCompleted.map(completedId => {
+                const course = coursesData.find(c => c.id === completedId);
+                const completionDate = new Date().toLocaleDateString();
+                return `
+                    <div class="program-card">
+                        <div class="completion-badge">✓</div>
+                        <h3>${course.title}</h3>
+                        <div class="program-meta">
+                            <div class="program-meta-item">
+                                <i class="fas fa-user-tie"></i>
+                                <span>${course.instructor}</span>
+                            </div>
+                            <div class="program-meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>${completionDate}</span>
+                            </div>
+                        </div>
+                        <p class="program-description">${course.description}</p>
+                        <div class="completion-percentage">
+                            <h4>100%</h4>
+                            <p style="margin: 0; font-size: 0.9rem;">Course Completed</p>
+                        </div>
+                        <button class="certificate-btn">
+                            <i class="fas fa-download"></i> Download Certificate
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Modal functions
+        function openApplicationModal(courseId, courseTitle) {
+            if (!currentUser) {
+                alert('Please sign in first to apply for courses.');
+                showLoginModal();
+                return;
+            }
+
+            const course = coursesData.find(c => c.id === courseId);
+            document.getElementById('courseTitle').textContent = course.title;
+            document.getElementById('courseInfo').textContent = `Level: ${course.level} • Duration: ${course.duration} • Instructor: ${course.instructor}`;
+            document.getElementById('applicationForm').dataset.courseId = courseId;
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('applicationModal').classList.add('active');
+        }
+
+        function showLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function showProfileModal() {
+            document.getElementById('profileModal').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function submitApplication(e) {
+            e.preventDefault();
+            const courseId = parseInt(document.getElementById('applicationForm').dataset.courseId);
+            
+            if (!userEnrollments.includes(courseId)) {
+                userEnrollments.push(courseId);
+                localStorage.setItem('userEnrollments', JSON.stringify(userEnrollments));
+                updateUserUI();
+                displayCourses('all');
+                
+                document.getElementById('successMessage').classList.add('show');
+                setTimeout(() => {
+                    closeModal('applicationModal');
+                    displayCourses('all');
+                }, 2000);
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const name = email.split('@')[0];
+            
+            currentUser = { name: name.charAt(0).toUpperCase() + name.slice(1), email: email };
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            userEnrollments = [];
+            userCompleted = [];
+            localStorage.setItem('userEnrollments', '[]');
+            localStorage.setItem('userCompleted', '[]');
+            
+            updateUserUI();
+            closeModal('loginModal');
+            displayCourses('all');
+        }
+
+        function handleLogout() {
+            currentUser = null;
+            userEnrollments = [];
+            userCompleted = [];
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('userEnrollments');
+            localStorage.removeItem('userCompleted');
+            
+            document.getElementById('userName').textContent = 'Welcome Student';
+            document.getElementById('userStatus').textContent = 'Not logged in • No active courses';
+            document.getElementById('loginBtn').style.display = 'inline-flex';
+            document.getElementById('profileBtn').style.display = 'none';
+            
+            closeModal('profileModal');
+            displayCourses('all');
+        }
+
+        function viewPastPrograms() {
+            switchTab('completed');
+        }
+
+        // Instructor cards hover effect
+        document.querySelectorAll('.instructor-card-hover').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.borderColor = 'var(--accent-color)';
+                this.style.transform = 'translateY(-8px)';
+                this.style.boxShadow = '0 20px 40px rgba(0, 217, 255, 0.2)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.borderColor = 'var(--border-color)';
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal.active');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

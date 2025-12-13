@@ -1,0 +1,536 @@
+/* Responsive Design Enhancements - Mobile First Approach */
+
+/* Large Screens (1400px+) - Already optimized in main CSS */
+
+/* Medium-Large Screens (1024px - 1399px) */
+@media (max-width: 1399px) {
+    .container {
+        padding: 0 2rem;
+    }
+
+    .product-detail-wrapper {
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (max-width: 1023px) {
+    header#nav {
+        padding: 0.75rem var(--spacing-lg);
+        height: auto;
+    }
+
+    header#nav .right-nav {
+        gap: var(--spacing-lg);
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-wrapper {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .hero-image {
+        order: -1;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services-wrapper {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .services-image {
+        order: -1;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-detail-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .product-gallery-main {
+        height: 400px;
+    }
+}
+
+/* Small Tablets/Large Phones (480px - 767px) */
+@media (max-width: 767px) {
+    :root {
+        --spacing-lg: 1rem;
+        --spacing-xl: 1.5rem;
+        --spacing-2xl: 2rem;
+    }
+
+    header#nav {
+        padding: 0.5rem var(--spacing-md);
+        height: auto;
+        gap: var(--spacing-md);
+    }
+
+    header#nav .left-nav img {
+        height: 40px;
+    }
+
+    header#nav .right-nav {
+        gap: var(--spacing-md);
+        font-size: 0.85rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .hero {
+        padding: var(--spacing-lg);
+        min-height: auto;
+    }
+
+    .hero-wrapper {
+        gap: var(--spacing-md);
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+    }
+
+    .categories {
+        padding: var(--spacing-lg);
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-section {
+        padding: var(--spacing-lg);
+    }
+
+    .featured-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .product-card {
+        border-radius: 0.5rem;
+    }
+
+    .product-image-wrapper {
+        height: 240px;
+    }
+
+    .product-price {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-large {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .product-actions {
+        flex-direction: column;
+    }
+
+    .add-to-cart-btn {
+        width: 100%;
+    }
+
+    .qty-selector {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .why-us {
+        padding: var(--spacing-lg);
+    }
+
+    .why-us-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .services {
+        padding: var(--spacing-lg);
+    }
+
+    .team-section {
+        padding: var(--spacing-lg);
+    }
+
+    .footer {
+        grid-template-columns: 1fr;
+        padding: var(--spacing-lg);
+        gap: var(--spacing-md);
+    }
+
+    .newsletter {
+        padding: var(--spacing-lg);
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form input {
+        min-width: 100%;
+    }
+
+    .shop-container {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-sidebar {
+        position: static;
+    }
+
+    .shop-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sort-select {
+        width: 100%;
+    }
+
+    .shop-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+}
+
+/* Small Phones (< 480px) */
+@media (max-width: 479px) {
+    :root {
+        --spacing-lg: 0.75rem;
+        --spacing-xl: 1rem;
+        --spacing-2xl: 1.5rem;
+    }
+
+    header#nav {
+        padding: 0.5rem;
+    }
+
+    header#nav .left-nav img {
+        height: 35px;
+    }
+
+    header#nav .right-nav {
+        gap: var(--spacing-sm);
+        font-size: 0.75rem;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .hero {
+        padding: var(--spacing-md);
+    }
+
+    .hero-wrapper {
+        gap: var(--spacing-md);
+    }
+
+    .hero h1 {
+        font-size: 1.25rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+    }
+
+    .hero-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .section-badge {
+        font-size: 0.75rem;
+    }
+
+    .section-header {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .section-header h2 {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .category-icon {
+        font-size: 2rem;
+    }
+
+    .featured-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .product-image-wrapper {
+        height: 200px;
+    }
+
+    .product-info {
+        padding: var(--spacing-md);
+    }
+
+    .product-price {
+        font-size: 1.1rem;
+    }
+
+    .product-footer {
+        padding-top: var(--spacing-md);
+    }
+
+    .product-link {
+        width: 35px;
+        height: 35px;
+    }
+
+    .view-all-btn {
+        margin-top: var(--spacing-lg);
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 0.5rem 1rem;
+    }
+
+    .why-us-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .why-us-icon {
+        font-size: 2rem;
+    }
+
+    .services-list {
+        gap: var(--spacing-md);
+    }
+
+    .service-item {
+        gap: var(--spacing-md);
+    }
+
+    .service-icon {
+        font-size: 1.5rem;
+    }
+
+    .service-content h3 {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .team-card {
+        padding: var(--spacing-md);
+    }
+
+    .team-card img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .team-role {
+        font-size: 0.8rem;
+    }
+
+    .team-bio {
+        font-size: 0.9rem;
+    }
+
+    .newsletter {
+        padding: var(--spacing-md);
+    }
+
+    .newsletter h2 {
+        font-size: 1.1rem;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form input {
+        min-width: 100%;
+        padding: 0.6rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    .footer {
+        grid-template-columns: 1fr;
+        padding: var(--spacing-md);
+        gap: var(--spacing-md);
+    }
+
+    .sub-foot {
+        gap: var(--spacing-sm);
+    }
+
+    .sub-foot p {
+        font-size: 0.9rem;
+    }
+
+    .sub-foot a {
+        font-size: 0.9rem;
+    }
+
+    .site-footer {
+        padding: var(--spacing-md);
+        font-size: 0.85rem;
+    }
+
+    .page-header {
+        padding: var(--spacing-lg);
+        text-align: center;
+    }
+
+    .shop-container {
+        grid-template-columns: 1fr;
+    }
+
+    .shop-sidebar {
+        position: static;
+        padding: var(--spacing-md);
+    }
+
+    .shop-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .product-gallery-main {
+        height: 300px;
+    }
+
+    .specs-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .spec-item {
+        padding: var(--spacing-md);
+    }
+
+    .price-current {
+        font-size: 1.5rem;
+    }
+
+    .price-original {
+        font-size: 0.9rem;
+        margin-left: var(--spacing-sm);
+    }
+}
+
+/* Extra Small Phones (< 360px) */
+@media (max-width: 359px) {
+    h1 {
+        font-size: 1.1rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    .hero {
+        padding: var(--spacing-sm);
+    }
+
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image-wrapper {
+        height: 180px;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .footer {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Print Styles */
+@media print {
+    header#nav,
+    .newsletter,
+    .footer,
+    .site-footer {
+        display: none;
+    }
+
+    body {
+        background-color: white;
+        color: #000;
+    }
+
+    .product-detail-wrapper {
+        page-break-inside: avoid;
+    }
+}

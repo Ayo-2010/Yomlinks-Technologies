@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yomlinks - Premium Computer Hardware & Tech Solutions</title>
+    <meta name="description" content="Discover premium computer components, high-performance gaming PCs, professional workstations, and expert tech services. Quality hardware with professional support.">
+    <meta name="keywords" content="computers, gaming PC, laptop, components, keyboard, mouse, tech services">
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./images/favicon.svg">
+    <meta property="og:title" content="Yomlinks - Premium Computer Hardware">
+    <meta property="og:description" content="Premium computers, components, and professional tech services">
+    <meta property="og:image" content="./images/og-image.svg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="http://example.com/">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Yomlinks",
+      "url": "http://example.com/",
+      "logo": "http://example.com/images/YomlinksLogo.jpg",
+      "description": "Premium computer hardware and tech services",
+      "sameAs": ["https://www.facebook.com/", "https://twitter.com/", "https://www.instagram.com/"]
+    }
+    </script>
+    <!-- Preload critical resources for faster rendering -->
+    <link rel="preload" as="style" href="./style.css">
+    <link rel="preload" as="script" href="./js/theme.js">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lazy-load.css">
+    <script src="./js/theme.js"></script>
+    <script src="./js/active-link.js"></script>
+     </head>
+<body>
+    <!-- Hybrid includes: tries external files first, falls back to embedded templates -->
+    <div data-include="includes/header.html" data-include-id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <span class="hero-badge">Welcome to Yomlinks</span>
+                <h1>Premium Computer Hardware & Tech Solutions</h1>
+                <p>Explore our curated selection of high-performance computers, professional components, and expert technical services. From gaming rigs to workstations, we deliver quality and excellence.</p>
+                <div class="hero-cta">
+                    <a href="./shop.html" class="btn btn-primary">Shop Now</a>
+                    <a href="#featured" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="./images/gamingpc.webp" alt="Premium Gaming PC Setup" loading="lazy" width="600" height="400">
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2>Shop by Category</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Laptops</h3>
+                    <p>High-performance laptops for work and gaming</p>
+                    <a href="./shop.html?category=laptops" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Desktops</h3>
+                    <p>Custom-built systems for every need</p>
+                    <a href="./shop.html?category=desktops" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Components</h3>
+                    <p>Premium PC components and upgrades</p>
+                    <a href="./shop.html?category=components" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Peripherals</h3>
+                    <p>Gaming and professional peripherals</p>
+                    <a href="./shop.html?category=peripherals" class="category-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="featured" class="featured-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Collections</span>
+                <h2>Featured Products</h2>
+                <p>Hand-picked products selected for quality, performance, and value</p>
+            </div>
+            <div class="featured-grid">
+                <!-- Product 1: Gaming PC -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./images/gamingpc.webp" alt="High-Performance Gaming PC" loading="lazy" width="400" height="300">
+                        <span class="product-badge">Featured</span>
+                        <div class="product-overlay">
+                            <a href="./products/gaming-pc.html" class="btn btn-white">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Desktop PC</span>
+                        <h3>High-Performance Gaming PC</h3>
+                        <p class="product-description">RTX 4080 • i9-13900K • 32GB RAM • SSD</p>
+                        <div class="product-footer">
+                            <span class="product-price">$2,899</span>
+                            <a href="./products/gaming-pc.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Mechanical Keyboard -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./images/keyboard.avif" alt="RGB Mechanical Keyboard" loading="lazy" width="400" height="300">
+                        <span class="product-badge">Popular</span>
+                        <div class="product-overlay">
+                            <a href="./products/mechanical-keyboard.html" class="btn btn-white">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Peripheral</span>
+                        <h3>RGB Mechanical Keyboard</h3>
+                        <p class="product-description">Cherry MX • Aluminum Frame • Programmable</p>
+                        <div class="product-footer">
+                            <span class="product-price">$189</span>
+                            <a href="./products/mechanical-keyboard.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Wireless Mouse -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./images/wirelessMouse.avif" alt="Precision Wireless Mouse" loading="lazy" width="400" height="300">
+                        <span class="product-badge">Best Seller</span>
+                        <div class="product-overlay">
+                            <a href="./products/wireless-mouse.html" class="btn btn-white">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Peripheral</span>
+                        <h3>Precision Wireless Mouse</h3>
+                        <p class="product-description">16,000 DPI • 70-hour Battery • USB-C</p>
+                        <div class="product-footer">
+                            <span class="product-price">$79</span>
+                            <a href="./products/wireless-mouse.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: USB-C Hub -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./images/usb-chub.avif" alt="7-in-1 USB-C Hub" loading="lazy" width="400" height="300">
+                        <span class="product-badge">Essential</span>
+                        <div class="product-overlay">
+                            <a href="./products/usb-c-hub.html" class="btn btn-white">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Accessory</span>
+                        <h3>7-in-1 USB-C Hub</h3>
+                        <p class="product-description">HDMI • USB 3.0 • SD Card • Charging</p>
+                        <div class="product-footer">
+                            <span class="product-price">$49</span>
+                            <a href="./products/usb-c-hub.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Laptop -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./images/hig-performance-laptop.avif" alt="Professional Workstation Laptop" loading="lazy" width="400" height="300">
+                        <span class="product-badge">Premium</span>
+                        <div class="product-overlay">
+                            <a href="./products/workstation-laptop.html" class="btn btn-white">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Laptop</span>
+                        <h3>Professional Workstation Laptop</h3>
+                        <p class="product-description">RTX 4070 • 64GB RAM • 15.6" 4K Display</p>
+                        <div class="product-footer">
+                            <span class="product-price">$3,499</span>
+                            <a href="./products/workstation-laptop.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Budget Laptop -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="./images/budgetlaptop.avif" alt="Budget-Friendly Laptop" loading="lazy" width="400" height="300">
+                        <span class="product-badge">Value</span>
+                        <div class="product-overlay">
+                            <a href="./products/budget-laptop.html" class="btn btn-white">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Laptop</span>
+                        <h3>Budget-Friendly Laptop</h3>
+                        <p class="product-description">Ryzen 5 • 8GB RAM • 256GB SSD • FHD</p>
+                        <div class="product-footer">
+                            <span class="product-price">$599</span>
+                            <a href="./products/budget-laptop.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-btn">
+                <a href="./shop.html" class="btn btn-primary btn-large">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <h2>Why Choose Yomlinks?</h2>
+            <div class="why-us-grid">
+                <div class="why-us-card">
+                    <div class="why-us-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Authentic Products</h3>
+                    <p>100% genuine hardware from authorized distributors with full warranty coverage</p>
+                </div>
+                <div class="why-us-card">
+                    <div class="why-us-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Fast Shipping</h3>
+                    <p>Quick worldwide delivery with tracking and professional handling</p>
+                </div>
+                <div class="why-us-card">
+                    <div class="why-us-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Expert Support</h3>
+                    <p>Dedicated technical support team available 24/7 for assistance</p>
+                </div>
+                <div class="why-us-card">
+                    <div class="why-us-icon">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                    <h3>Easy Returns</h3>
+                    <p>Hassle-free 30-day return policy with full refunds</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="services-wrapper">
+                <div class="services-content">
+                    <span class="section-badge">Our Services</span>
+                    <h2>Expert Technical Services</h2>
+                    <p>Beyond hardware sales, Yomlinks provides comprehensive technical solutions for businesses and enthusiasts.</p>
+                    
+                    <div class="services-list">
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>System Assembly</h3>
+                                <p>Custom PC building with professional configuration and optimization</p>
+                            </div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-laptop-medical"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Repair & Maintenance</h3>
+                                <p>Comprehensive diagnostics and repair services for all devices</p>
+                            </div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Extended Warranty</h3>
+                                <p>Comprehensive protection plans for all your tech investments</p>
+                            </div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-chalkboard-user"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Tech Consultation</h3>
+                                <p>Expert advice on choosing the right components for your needs</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="./services.html" class="btn btn-primary">Learn About Services</a>
+                </div>
+                <div class="services-image">
+                    <img src="./images/techback2.webp" alt="Professional Tech Services" loading="lazy" width="500" height="400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Meet Our Team</span>
+                <h2>Expert Professionals</h2>
+                <p>Our dedicated team of tech experts is here to help you find the perfect solution</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="./images/employee1.webp" alt="Abdullah Abdulwahab - Lead Engineer" width="300" height="300">
+                    <h3>Abdullah Abdulwahab</h3>
+                    <p class="team-role">Lead Engineer & Founder</p>
+                    <p class="team-bio">With over 10 years of experience in computer hardware architecture, Abdullah leads our technical strategy and product curation.</p>
+                    <div class="team-social">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="./images/employee2.webp" alt="Abdulquadri Umar - Support Lead" width="300" height="300">
+                    <h3>Abdulquadri Umar</h3>
+                    <p class="team-role">Technical Support Lead</p>
+                    <p class="team-bio">Dedicated to solving complex technical challenges, Abdulquadri ensures every customer receives expert assistance and support.</p>
+                    <div class="team-social">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="./images/employee3.webp" alt="Muziab Abdulwahab - Product Specialist" width="300" height="300">
+                    <h3>Muziab Abdulwahab</h3>
+                    <p class="team-role">Product Specialist & Consultant</p>
+                    <p class="team-bio">Passionate about matching customers with ideal tech solutions, Muziab provides personalized recommendations and technical guidance.</p>
+                    <div class="team-social">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Get the latest product releases, tech tips, and exclusive offers delivered to your inbox</p>
+            <form class="newsletter-form" action="#" method="POST">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <div data-include="includes/footer.html" data-include-id="footer"></div>
+
+    <!-- Embedded fallback templates for offline/file:// access -->
+    <template id="include-template-header">
+      <header id="nav">
+        <div class="left-nav">
+          <a href="./index.html" title="Yomlinks Home" class="logo-link"><img src="./images/YomlinksLogo.jpg" alt="Yomlinks logo" loading="lazy"></a>
+        </div>
+        <div class="right-nav">
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="./shop.html" class="nav-link">Shop</a>
+            <a href="./training.html" class="nav-link">Courses</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./contact.html" class="nav-link">Contact</a>
+          </nav>
+          <div class="theme-switcher" role="region" aria-label="Theme switcher">
+            <button 
+              class="theme-toggle" 
+              id="themeToggle" 
+              type="button" 
+              title="Switch to light mode"
+              aria-label="Toggle dark/light theme"
+              aria-checked="false"
+              role="switch">
+              <span class="icon-moon" aria-hidden="true"><i class="fas fa-moon"></i></span>
+              <span class="slider" aria-hidden="true"></span>
+              <span class="icon-sun" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            </button>
+          </div>
+          <a href="./shop.html" title="Shopping Cart" class="cart-icon" aria-label="Open shopping cart"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </header>
+    </template>
+
+    <template id="include-template-footer">
+      <div class="footer">
+        <div class="sub-foot">
+          <h4>Location</h4>
+          <p>Agbede, Ikorodu</p>
+          <p>Lagos, Nigeria</p>
+        </div>
+        <div class="sub-foot">
+          <h4>Contact</h4>
+          <a href="mailto:email@contact.com">ayoabdullah13.com</a>
+          <a href="tel:+07045033528">+07045033528</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Company</h4>
+          <a href="./index.html">About Us</a>
+          <a href="./services.html">Services</a>
+          <a href="./shop.html">Products</a>
+          <a href="./blog.html">Blog</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Support</h4>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">FAQ</a>
+          <a href="#">Track Order</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Legal</h4>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <p>© <span id="year"></span> Yomlinks. All rights reserved. | Premium Computer Hardware & Tech Solutions</p>
+      </footer>
+    </template>
+
+    <script src="./js/include.js" defer></script>
+    <script src="./fontawesome-free-6.6.0-web/js/all.min.js" defer></script>
+    <script src="./js/lazy-load.js" defer></script>
+    </body>
+    </html>

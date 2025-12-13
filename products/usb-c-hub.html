@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-in-1 USB-C Hub - Yomlinks</title>
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../fontawesome-free-6.6.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .product-detail-section { padding: var(--spacing-2xl) var(--spacing-lg); background-color: var(--primary-bg); }
+        .product-detail-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-2xl); align-items: start; }
+        .product-gallery { background-color: var(--secondary-bg); border: 1px solid var(--border-color); border-radius: 0.75rem; overflow: hidden; }
+        .product-gallery-main { width: 100%; height: 500px; background-color: var(--tertiary-bg); }
+        .product-gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+        .product-price-section { background-color: var(--secondary-bg); border: 1px solid var(--border-color); border-radius: 0.75rem; padding: var(--spacing-lg); margin-bottom: var(--spacing-lg); }
+        .price-current { font-size: 2rem; font-weight: 700; color: var(--accent-color); }
+        .product-actions { display: flex; gap: var(--spacing-md); margin-bottom: var(--spacing-lg); }
+        .qty-selector { display: flex; align-items: center; background-color: var(--tertiary-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; width: fit-content; }
+        .qty-selector button { background: none; border: none; color: var(--text-primary); cursor: pointer; padding: 0.5rem 0.75rem; }
+        .qty-selector input { width: 60px; border: none; background-color: transparent; text-align: center; color: var(--text-primary); border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); }
+        .add-to-cart-btn { flex: 1; min-width: 200px; }
+        .product-description { background-color: var(--secondary-bg); border: 1px solid var(--border-color); border-radius: 0.75rem; padding: var(--spacing-lg); }
+        @media (max-width: 1024px) { .product-detail-wrapper { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .product-gallery-main { height: 350px; } .product-actions { flex-direction: column; } .add-to-cart-btn { width: 100%; } }
+    </style>
+</head>
+<body>
+    <div data-include="../includes/header.html"></div>
+
+    <section class="product-detail-section">
+        <div class="container">
+            <div style="margin-bottom: var(--spacing-lg);"><a href="../shop.html">Shop</a> / <span>USB-C Hub</span></div>
+
+            <div class="product-detail-wrapper">
+                <div class="product-gallery">
+                    <div class="product-gallery-main">
+                        <img src="../images/usb-chub.avif" alt="7-in-1 USB-C Hub">
+                    </div>
+                </div>
+
+                <div class="product-detail-info">
+                    <h1>7-in-1 USB-C Hub</h1>
+                    
+                    <div style="margin-bottom: var(--spacing-lg);">
+                        <span style="color: var(--accent-color); font-weight: 600;">★★★★★ (615 reviews)</span>
+                    </div>
+
+                    <div class="product-price-section">
+                        <div style="margin-bottom: var(--spacing-md);"><span class="price-current">$49</span></div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-check-circle" style="color: var(--success-color);"></i>
+                            <span>In Stock</span>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <div class="qty-selector">
+                            <button onclick="this.nextElementSibling.value = Math.max(1, parseInt(this.nextElementSibling.value) - 1)">−</button>
+                            <input type="number" value="1" min="1" readonly>
+                            <button onclick="this.previousElementSibling.value = parseInt(this.previousElementSibling.value) + 1">+</button>
+                        </div>
+                        <button class="btn btn-primary add-to-cart-btn">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-description">
+                <h3>About This Hub</h3>
+                <p>Expand your connectivity with our 7-in-1 USB-C Hub. Featuring HDMI output, multiple USB 3.0 ports, SD card reader, and USB-C charging pass-through, this compact hub is perfect for laptops and mobile devices.</p>
+                <h3 style="margin-top: var(--spacing-lg);">Ports Included</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--success-color); margin-right: 0.5rem;"></i>1x HDMI (4K@30Hz)</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--success-color); margin-right: 0.5rem;"></i>3x USB 3.0 Ports</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--success-color); margin-right: 0.5rem;"></i>1x SD Card Slot</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--success-color); margin-right: 0.5rem;"></i>1x USB-C Charging</li>
+                    <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color: var(--success-color); margin-right: 0.5rem;"></i>Compact aluminum design</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div data-include="../includes/footer.html"></div>
+    <script src="../js/theme.js"></script>
+    <script src="../js/include.js"></script>
+    <script src="../fontawesome-free-6.6.0-web/js/all.min.js"></script>
+</body>
+</html>

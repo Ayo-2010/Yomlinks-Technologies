@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products — Yomlinks</title>
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Shop-style.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/brands.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.css">
+</head>
+<body>
+    <!-- Hybrid includes: tries external files first, falls back to embedded templates -->
+    <div data-include="includes/header.html" data-include-id="header"></div>
+    <div class="shop-main">
+        <h1>Shop</h1>
+    </div>
+    <div class="section shop-section">
+        <div class="left-shop">
+            <a href="./shop.html"  >All</a>
+            <a href="./shop-new.html">New</a>
+            <a href="./shop-products.html"  class="active">Products</a>
+        </div>
+        <div class="right-shop">
+            
+            <div class="sec">
+                <div class="shopContain1">
+                    <a href="#"><img src="./images/headset.svg" alt=""></a>
+                    <p class="productName">Headset</p>
+                    <p class="productPrice">79 USD</p>
+                </div>
+                <div class="shopContain1">
+                    <a href="#"><img src="./images/ssd.svg" alt=""></a>
+                    <p class="productName">SSD Bundle</p>
+                    <p class="productPrice">179 USD</p>
+                </div>
+                <div class="shopContain1">
+                    <a href="#"><img src="./images/desktop_bundle.avif" alt=""></a>
+                    <p class="productName">Desktop Bundle</p>
+                    <p class="productPrice">799 USD</p>
+                </div>
+            
+            </div>
+            <div class="sec">
+                <div class="shopContain1">
+                    <a href="#"><img src="./images/monitor.avif" alt=""></a>
+                    <p class="productName">27" Monitor</p>
+                    <p class="productPrice">229 USD</p>
+                </div>
+                <div class="shopContain1">
+                    <a href="#"><img src="./images/keyboard.avif" alt=""></a>
+                    <p class="productName">Mechanical Keyboard</p>
+                    <p class="productPrice">129 USD</p>
+                </div>
+                <div class="shopContain1">
+                    <a href="#"><img src="./images/wirelessMouse.avif" alt=""></a>
+                    <p class="productName">Wireless Mouse</p>
+                    <p class="productPrice">39 USD</p>
+                </div>
+            
+            </div>
+            
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="sub-foot">
+            <p>02-233 Warszawa</p>
+            <p>Al. Jerozolimskie 12</p>
+        </div>
+        <div class="sub-foot">
+            <a href="#">email@contact.com</a>
+            <a href="#">07045033528</a>
+        </div>
+        <div class="sub-foot">
+            <a href="#">Store Regulations</a>
+            <a href="#">Privacy policy</a>
+        </div>
+        <div class="sub-foot">
+            <a href="#">Delivery</a>
+            <a href="#">Returns & Exchanges</a>
+        </div>
+        <div class="sub-foot">
+            <a href="#"><i class="fa fa-facebook-square"></i></a>
+            <a href="#"><i class="fa fa-x-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+
+    </div>
+
+    <!-- Hybrid includes: footer -->
+    <div data-include="includes/footer.html" data-include-id="footer"></div>
+
+    <!-- Embedded fallback templates for offline/file:// access -->
+    <template id="include-template-header">
+      <header id="nav">
+        <div class="left-nav">
+          <a href="./index.html" title="Yomlinks Home" class="logo-link"><img src="./images/YomlinksLogo.jpg" alt="Yomlinks logo" loading="lazy"></a>
+        </div>
+        <div class="right-nav">
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="./shop.html" class="nav-link">Shop</a>
+            <a href="./training.html" class="nav-link">Courses</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./contact.html" class="nav-link">Contact</a>
+          </nav>
+          <div class="theme-switcher" role="region" aria-label="Theme switcher">
+            <button 
+              class="theme-toggle" 
+              id="themeToggle" 
+              type="button" 
+              title="Switch to light mode"
+              aria-label="Toggle dark/light theme"
+              aria-checked="false"
+              role="switch">
+              <span class="icon-moon" aria-hidden="true"><i class="fas fa-moon"></i></span>
+              <span class="slider" aria-hidden="true"></span>
+              <span class="icon-sun" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            </button>
+          </div>
+          <a href="./shop.html" title="Shopping Cart" class="cart-icon" aria-label="Open shopping cart"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </header>
+    </template>
+
+    <template id="include-template-footer">
+      <div class="footer">
+        <div class="sub-foot">
+          <h4>Location</h4>
+          <p>Agbede, Ikorodu</p>
+          <p>Lagos, Nigeria</p>
+        </div>
+        <div class="sub-foot">
+          <h4>Contact</h4>
+          <a href="mailto:email@contact.com">ayoabdullah13.com</a>
+          <a href="tel:+07045033528">+07045033528</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Company</h4>
+          <a href="./index.html">About Us</a>
+          <a href="./services.html">Services</a>
+          <a href="./shop.html">Products</a>
+          <a href="./blog.html">Blog</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Support</h4>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">FAQ</a>
+          <a href="#">Track Order</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Legal</h4>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <p>© <span id="year"></span> Yomlinks. All rights reserved. | Premium Computer Hardware & Tech Solutions</p>
+      </footer>
+    </template>
+
+    <script src="./js/include.js" defer></script>
+    <script src="./fontawesome-free-6.6.0-web/js/all.min.js"></script>
+</body>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Performance Gaming PC - Yomlinks</title>
+    <meta name="description" content="Premium high-performance gaming PC with RTX 4080, i9-13900K processor, and 32GB RAM. Perfect for gaming and professional workloads.">
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../fontawesome-free-6.6.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../js/theme.js"></script>
+    <style>
+        .product-detail-section {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background-color: var(--primary-bg);
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: var(--accent-color);
+        }
+
+        .product-detail-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+            align-items: start;
+        }
+
+        .product-gallery {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .product-gallery-main {
+            width: 100%;
+            height: 500px;
+            background-color: var(--tertiary-bg);
+            overflow: hidden;
+        }
+
+        .product-gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-gallery-thumbs {
+            display: flex;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
+            background-color: var(--tertiary-bg);
+            overflow-x: auto;
+        }
+
+        .gallery-thumb {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-thumb:hover {
+            border-color: var(--accent-color);
+        }
+
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-detail-info h1 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+            color: var(--warning-color);
+        }
+
+        .rating-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .product-price-section {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .price-display {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .price-current {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .price-original {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .price-discount {
+            background-color: var(--danger-color);
+            color: var(--text-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .product-status {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .status-available {
+            color: var(--success-color);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .spec-item {
+            background-color: var(--tertiary-bg);
+            padding: var(--spacing-md);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .spec-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-value {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            background-color: var(--tertiary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            width: fit-content;
+        }
+
+        .qty-selector button {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            transition: background-color 0.2s;
+        }
+
+        .qty-selector button:hover {
+            background-color: var(--border-color);
+        }
+
+        .qty-selector input {
+            width: 60px;
+            border: none;
+            background-color: transparent;
+            text-align: center;
+            color: var(--text-primary);
+            font-weight: 600;
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+        }
+
+        .add-to-cart-btn {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .product-description {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .description-section h3 {
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .description-section ul {
+            list-style: none;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .description-section li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-secondary);
+        }
+
+        .description-section i {
+            color: var(--success-color);
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .related-products {
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-2xl);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .related-products h2 {
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        @media (max-width: 1024px) {
+            .product-detail-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-gallery-main {
+                height: 350px;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .add-to-cart-btn {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .qty-selector {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div data-include="../includes/header.html"></div>
+
+    <section class="product-detail-section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span>/</span>
+                <a href="../shop.html">Shop</a>
+                <span>/</span>
+                <span>Gaming PC</span>
+            </div>
+
+            <div class="product-detail-wrapper">
+                <!-- Product Gallery -->
+                <div class="product-gallery">
+                    <div class="product-gallery-main">
+                        <img id="mainImage" src="../images/gamingpc.webp" alt="High-Performance Gaming PC">
+                    </div>
+                    <div class="product-gallery-thumbs">
+                        <div class="gallery-thumb">
+                            <img src="../images/gamingpc.webp" alt="View 1" onclick="changeImage(this)">
+                        </div>
+                        <div class="gallery-thumb">
+                            <img src="../images/gamepc.webp" alt="View 2" onclick="changeImage(this)">
+                        </div>
+                        <div class="gallery-thumb">
+                            <img src="../images/techback2.webp" alt="View 3" onclick="changeImage(this)">
+                        </div>
+                        <div class="gallery-thumb">
+                            <img src="../images/techBack.avif" alt="View 4" onclick="changeImage(this)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-detail-info">
+                    <h1>High-Performance Gaming PC</h1>
+                    
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="rating-text">(248 reviews)</span>
+                    </div>
+
+                    <div class="product-price-section">
+                        <div class="price-display">
+                            <span class="price-current">$2,899</span>
+                            <span class="price-original">$3,299</span>
+                            <span class="price-discount">12% OFF</span>
+                        </div>
+                        <div class="product-status">
+                            <i class="fas fa-check-circle status-available"></i>
+                            <span>In Stock - Ships within 24 hours</span>
+                        </div>
+                    </div>
+
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">GPU</div>
+                            <div class="spec-value">RTX 4080 12GB</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">CPU</div>
+                            <div class="spec-value">i9-13900K</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">RAM</div>
+                            <div class="spec-value">32GB DDR5</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Storage</div>
+                            <div class="spec-value">2TB NVMe SSD</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Power Supply</div>
+                            <div class="spec-value">1000W Gold</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Warranty</div>
+                            <div class="spec-value">2-Year</div>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <div class="qty-selector">
+                            <button onclick="decreaseQty()">−</button>
+                            <input type="number" id="quantity" value="1" min="1" readonly>
+                            <button onclick="increaseQty()">+</button>
+                        </div>
+                        <button class="btn btn-primary add-to-cart-btn">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+
+                    <div style="display: flex; gap: var(--spacing-md);">
+                        <button class="btn btn-secondary" style="flex: 1;">
+                            <i class="fas fa-heart"></i> Wishlist
+                        </button>
+                        <button class="btn btn-secondary" style="flex: 1;">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Description -->
+            <div class="product-description">
+                <div class="description-section">
+                    <h3>About This Gaming PC</h3>
+                    <p>Experience ultimate gaming performance with our high-end gaming PC. Featuring an Intel Core i9-13900K processor paired with the NVIDIA RTX 4080, this system delivers exceptional frame rates for competitive gaming, 4K gaming, and demanding professional workloads.</p>
+                </div>
+
+                <div class="description-section">
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> <strong>Blazing Speed:</strong> Intel i9-13900K with 24 cores for maximum performance</li>
+                        <li><i class="fas fa-check"></i> <strong>Professional Graphics:</strong> NVIDIA RTX 4080 for 4K gaming and content creation</li>
+                        <li><i class="fas fa-check"></i> <strong>Maximum Memory:</strong> 32GB DDR5 RAM for smooth multitasking</li>
+                        <li><i class="fas fa-check"></i> <strong>Fast Storage:</strong> 2TB NVMe SSD for rapid load times</li>
+                        <li><i class="fas fa-check"></i> <strong>Stable Power:</strong> 1000W Gold-rated power supply for reliability</li>
+                        <li><i class="fas fa-check"></i> <strong>Advanced Cooling:</strong> Premium liquid cooling system with RGB lighting</li>
+                        <li><i class="fas fa-check"></i> <strong>Warranty:</strong> 2-year comprehensive warranty with free support</li>
+                    </ul>
+                </div>
+
+                <div class="description-section">
+                    <h3>What's Included</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Fully assembled and tested system</li>
+                        <li><i class="fas fa-check"></i> Windows 11 Pro pre-installed</li>
+                        <li><i class="fas fa-check"></i> Wireless keyboard and mouse</li>
+                        <li><i class="fas fa-check"></i> Power cable and documentation</li>
+                        <li><i class="fas fa-check"></i> Extended warranty certificate</li>
+                    </ul>
+                </div>
+
+                <div class="description-section">
+                    <h3>Warranty & Support</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 2-year manufacturer's warranty</li>
+                        <li><i class="fas fa-check"></i> Free technical support 24/7</li>
+                        <li><i class="fas fa-check"></i> Replacement parts covered</li>
+                        <li><i class="fas fa-check"></i> Optional extended warranty available</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="related-products">
+                <h2>Related Products</h2>
+                <div class="featured-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="../images/hig-performance-laptop.avif" alt="Workstation Laptop" loading="lazy">
+                            <div class="product-overlay">
+                                <a href="./workstation-laptop.html" class="btn btn-white">View Details</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Laptop</span>
+                            <h3>Professional Workstation Laptop</h3>
+                            <p class="product-description">RTX 4070 • 64GB RAM • 4K Display</p>
+                            <div class="product-footer">
+                                <span class="product-price">$3,499</span>
+                                <a href="./workstation-laptop.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="../images/monitor.avif" alt="4K Monitor" loading="lazy">
+                            <div class="product-overlay">
+                                <a href="./4k-monitor.html" class="btn btn-white">View Details</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Monitor</span>
+                            <h3>4K Professional Monitor</h3>
+                            <p class="product-description">27" 4K • 144Hz • USB-C</p>
+                            <div class="product-footer">
+                                <span class="product-price">$799</span>
+                                <a href="./4k-monitor.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="../images/keyboard.avif" alt="Mechanical Keyboard" loading="lazy">
+                            <div class="product-overlay">
+                                <a href="./mechanical-keyboard.html" class="btn btn-white">View Details</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Peripheral</span>
+                            <h3>RGB Mechanical Keyboard</h3>
+                            <p class="product-description">Cherry MX • Aluminum Frame</p>
+                            <div class="product-footer">
+                                <span class="product-price">$189</span>
+                                <a href="./mechanical-keyboard.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div data-include="../includes/footer.html"></div>
+
+    <script src="../js/include.js"></script>
+    <script src="../fontawesome-free-6.6.0-web/js/all.min.js"></script>
+    <script>
+        function changeImage(img) {
+            document.getElementById('mainImage').src = img.src;
+        }
+
+        function increaseQty() {
+            const input = document.getElementById('quantity');
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decreaseQty() {
+            const input = document.getElementById('quantity');
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+    </script>
+</body>
+</html>

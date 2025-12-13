@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common PC Problems and Their Solutions: A Complete Troubleshooting Guide — Yomlinks</title>
+    <meta name="description" content="Comprehensive troubleshooting guide covering blue screens, performance degradation, and common PC issues with step-by-step solutions.">
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        .article-hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 80px 24px;
+            text-align: center;
+        }
+        .article-hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-family: 'Outfit', sans-serif;
+        }
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            font-size: 14px;
+            opacity: 0.9;
+            flex-wrap: wrap;
+        }
+        .article-content {
+            max-width: 750px;
+            margin: 60px auto;
+            padding: 40px 24px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .article-content h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-top: 56px;
+            margin-bottom: 28px;
+            font-family: 'Outfit', sans-serif;
+            color: #0f172a;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+        }
+        .article-content h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #1e293b;
+            line-height: 1.4;
+        }
+        .article-content p {
+            font-size: 17px;
+            line-height: 2.0;
+            color: #475569;
+            margin-bottom: 24px;
+            letter-spacing: 0.3px;
+        }
+        .article-content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 24px;
+            margin-top: 16px;
+        }
+        .article-content li {
+            font-size: 17px;
+            line-height: 2.0;
+            color: #475569;
+            margin-bottom: 18px;
+            padding-left: 32px;
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+        .article-content li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #06b6d4;
+            font-weight: bold;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 16px;
+            margin: 24px 0;
+            border-radius: 4px;
+        }
+        .article-footer {
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 40px 24px;
+            margin-top: 60px;
+        }
+        .author-section {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #e2e8f0;
+        }
+        .author-info h4 {
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0 0 4px 0;
+        }
+        .author-info p {
+            font-size: 14px;
+            color: #64748b;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hybrid includes: tries external files first, falls back to embedded templates -->
+    <div data-include="includes/header.html" data-include-id="header"></div>
+
+    <article>
+        <div class="article-hero">
+            <h1>Common PC Problems and Their Solutions: A Complete Troubleshooting Guide</h1>
+            <div class="article-meta">
+                <div><i class="fas fa-calendar"></i> November 25, 2024</div>
+                <div><i class="fas fa-user"></i> Abdulquadri Umar</div>
+                <div><i class="fas fa-clock"></i> 13 min read</div>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <img src="./images/remote-support.avif" alt="PC Troubleshooting" style="width: 100%; border-radius: 12px; margin-bottom: 32px;">
+
+            <h2>Introduction</h2>
+            <p>PC problems are inevitable—at some point, every computer user encounters performance issues, crashes, or hardware failures. The difference between frustrated users and confident troubleshooters is understanding the systematic approach to diagnosis and resolution. Rather than panicking or attempting random fixes, professional troubleshooting follows a logical methodology: identifying symptoms, isolating the problem source, implementing solutions, and monitoring for resolution. This comprehensive guide walks through common PC problems—from dreaded blue screens of death to performance degradation—and provides step-by-step solutions. Whether you're dealing with hardware failures, software conflicts, or configuration issues, this guide equips you with practical troubleshooting techniques used by IT professionals.</p>
+
+            <h2>The Systematic Troubleshooting Approach</h2>
+            <h3>Step 1: Identify the Problem</h3>
+            <p>Before attempting fixes, clearly define what's happening. Note when the problem occurs: on startup, during specific applications, or randomly? Does it happen after recent changes, installations, or updates? Document error messages exactly as they appear—error codes are invaluable for diagnosis. Gather as much information as possible: recent hardware changes, software updates, temperature readings, or unusual sounds or smells. This information guides your troubleshooting direction.</p>
+
+            <h3>Step 2: Isolate the Source</h3>
+            <p>Determine whether the issue is hardware or software-related. Hardware problems often produce consistent symptoms and error codes. Software issues may be intermittent or tied to specific applications. Test in Safe Mode to determine if third-party software is involved. Monitor temperatures, disk usage, and memory utilization to identify resource constraints. Isolating the problem source prevents wasting time on irrelevant fixes.</p>
+
+            <h3>Step 3: Implement Solutions</h3>
+            <p>Start with the simplest, least invasive solutions first. Restart your computer—surprisingly often effective. Update drivers and software. Check for malware. Only proceed to more complex solutions like clean Windows installation after ruling out simpler causes.</p>
+
+            <h2>Blue Screen of Death (BSOD)</h2>
+            <h3>What Causes It?</h3>
+            <p>Blue screens occur when Windows encounters an unrecoverable error. Common culprits include driver incompatibilities, hardware failures, malware infections, or overclocking instability. The error code displayed (DRIVER_IRQL_NOT_LESS_OR_EQUAL, PAGE_FAULT_IN_NONPAGED_AREA, etc.) provides diagnostic clues.</p>
+
+            <h3>Troubleshooting Steps</h3>
+            <ul>
+                <li>Note the exact error code and search online for specific solutions</li>
+                <li>Update all drivers, especially graphics, chipset, and motherboard</li>
+                <li>Boot into Safe Mode to determine if third-party software is responsible</li>
+                <li>Disable recent startup programs or uninstall recently installed software</li>
+                <li>Run Windows Memory Diagnostic to check for RAM issues</li>
+                <li>Check hard drive health using CrystalDiskInfo or manufacturer tools</li>
+                <li>Perform a clean Windows installation if other solutions fail</li>
+            </ul>
+
+            <h3>If It's Hardware-Related</h3>
+            <p>Persistent blue screens despite software troubleshooting indicate hardware failure. RAM failure is common—run Windows Memory Diagnostic or MemTest86. Hard drive failures manifest as BSOD during disk-intensive operations. Temperature-related crashes suggest cooling failures or thermal throttling.</p>
+
+            <div class="warning-box">
+                <strong>Warning:</strong> If you see the same error code repeatedly or the system is unstable, back up your data immediately before the drive fails completely.
+            </div>
+
+            <h2>Performance Degradation</h2>
+            <h3>Common Causes</h3>
+            <p>Slow systems result from various causes: hard drive failures causing bottlenecks, excessive startup programs consuming resources, malware running in the background, or hardware failure (failing CPU, GPU, or RAM). Identifying the specific cause is essential for appropriate resolution.</p>
+
+            <h3>Diagnosis Tools</h3>
+            <ul>
+                <li><strong>Task Manager:</strong> Monitor CPU, RAM, disk, and network usage to identify resource bottlenecks</li>
+                <li><strong>Resource Monitor:</strong> Detailed view of which processes consume resources</li>
+                <li><strong>CrystalDiskInfo:</strong> Monitor hard drive health and identify failing drives</li>
+                <li><strong>HWiNFO:</strong> Real-time hardware monitoring and temperature tracking</li>
+                <li><strong>Malwarebytes:</strong> Detect and remove malware causing slowdowns</li>
+            </ul>
+
+            <h3>Solutions Based on Diagnosis</h3>
+            <h4>High CPU Usage</h4>
+            <p>Identify the process consuming CPU resources. Legitimate system processes (svchost.exe, SearchIndexer.exe) sometimes spike briefly. If a specific application consistently uses high CPU, close it and investigate. Malware often disguises itself as system processes, so verify through Task Manager's Details tab. End unidentified high-CPU processes and scan for malware.</p>
+
+            <h4>High RAM Usage</h4>
+            <p>Modern systems use available RAM efficiently, so high RAM usage isn't inherently problematic unless performance suffers. If your system slows with high RAM usage, you may need more RAM or have a memory leak. Close unnecessary applications. If problems persist, a RAM upgrade improves performance dramatically.</p>
+
+            <h4>High Disk Usage</h4>
+            <p>Excessive disk activity causes severe slowdowns. Disable unnecessary startup programs consuming disk resources. Scan for malware—ransomware and crypto-miners generate intense disk activity. Run Windows Disk Cleanup to remove temporary files. If problems persist, your hard drive may be failing—back up data immediately and consider replacement.</p>
+
+            <h4>High Temperature</h4>
+            <p>CPUs and GPUs thermal throttle when reaching critical temperatures, reducing clock speeds and performance. Monitor temperatures using HWiNFO. Normal idle temperatures are 30-50°C; under load, 60-85°C depending on cooling. Excessive heat indicates cooling failure, dust clogging heatsinks, or thermal paste degradation. Clean dust from heatsinks and reapply thermal paste. Replace thermal pads if necessary. Ensure case fans and CPU coolers function properly.</p>
+
+            <h2>No POST (Power-On Self-Test) / No Display</h2>
+            <p>If your PC powers on but displays nothing and won't complete startup, troubleshoot systematically. Reseat RAM by powering off, removing RAM sticks, reseating them firmly, and restarting. Test with one RAM stick at a time to isolate faulty modules. Remove and reseat your GPU. Ensure all power connectors (24-pin motherboard, 8-pin CPU, PCIe power) are firmly connected. Try an onboard display output if using a dedicated GPU. If still no display, the motherboard may have failed—this requires professional repair or replacement.</p>
+
+            <h2>Overheating Issues</h2>
+            <h3>Prevention and Solution</h3>
+            <ul>
+                <li>Clean dust filters and heatsinks quarterly</li>
+                <li>Ensure adequate case airflow with balanced intake and exhaust</li>
+                <li>Monitor temperatures regularly using HWiNFO</li>
+                <li>Replace thermal paste if over 2 years old</li>
+                <li>Reposition cases for better air circulation</li>
+                <li>Replace failing case or CPU fans immediately</li>
+                <li>Consider liquid cooling if air cooling proves inadequate</li>
+            </ul>
+
+            <h2>Malware and Security Issues</h2>
+            <p>Malware causes performance degradation, crashes, data theft, and instability. Prevention is crucial: maintain updated antivirus software, enable Windows Defender, avoid suspicious downloads, and be cautious with email attachments. If infected, use Malwarebytes for malware removal. Boot into Safe Mode to eliminate active malware interference. In severe cases, Windows reinstallation is necessary for complete removal.</p>
+
+            <h2>Network and Connectivity Issues</h2>
+            <h3>No Internet Connection</h3>
+            <ul>
+                <li>Verify router shows internet connection</li>
+                <li>Restart modem and router (60-second power cycle)</li>
+                <li>Check if other devices connect successfully</li>
+                <li>Update network drivers through Device Manager</li>
+                <li>Run Windows Network Troubleshooter</li>
+                <li>Verify IP address assignment through ipconfig /all</li>
+                <li>Disable IPv6 if issues persist</li>
+            </ul>
+
+            <h2>Driver-Related Problems</h3>
+            <p>Outdated, corrupt, or incompatible drivers cause crashes, performance issues, and hardware malfunction. Regularly update drivers through Windows Update or manufacturer websites. If problems occur after driver updates, roll back to previous versions. Nvidia, AMD, Intel, and motherboard manufacturers regularly release driver updates—check their websites monthly for improvements and bug fixes.</p>
+
+            <h2>Storage and Disk Issues</h2>
+            <h3>Failing Hard Drive Symptoms</h3>
+            <ul>
+                <li>Unusual clicking or grinding sounds</li>
+                <li>Files becoming corrupted or inaccessible</li>
+                <li>Slow file access times</li>
+                <li>Frequent BSOD during disk operations</li>
+                <li>SMART errors reported in CrystalDiskInfo</li>
+            </ul>
+
+            <p>If your hard drive is failing, back up critical data immediately to external storage. A failing drive can completely stop functioning without warning. Purchase a replacement drive and perform a clean Windows installation.</p>
+
+            <h2>Professional Help When Needed</h2>
+            <p>Some issues exceed DIY troubleshooting: persistent blue screens despite exhaustive troubleshooting, hardware failures affecting multiple components, data recovery from failed drives, or water damage. Professional technicians have diagnostic equipment, spare components for testing, and experience with complex failures. Knowing when to seek professional help prevents accidentally damaging your system further.</p>
+
+            <h2>Preventive Maintenance</h2>
+            <ul>
+                <li>Keep Windows and software updated monthly</li>
+                <li>Scan for malware weekly</li>
+                <li>Monitor temperatures and storage health monthly</li>
+                <li>Clean internal dust quarterly</li>
+                <li>Back up critical data regularly</li>
+                <li>Keep driver software current</li>
+                <li>Maintain a startup programs list of legitimate entries</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>PC troubleshooting needn't be intimidating when you approach it systematically. Identify symptoms clearly, gather diagnostic information, isolate the problem source, and implement targeted solutions. Start with simple troubleshooting before progressing to complex procedures. Maintain preventive practices—regular cleaning, updates, backups, and monitoring—to prevent many common issues. With patience and logical thinking, you can resolve most PC problems independently. Remember, professional help is always available when needed, and sometimes the best investment is expert assistance for complex hardware failures or data recovery.</p>
+        </div>
+
+        <div class="article-footer">
+            <div class="author-section">
+                <div class="author-avatar">
+                    <img src="./images/employee2.webp" alt="Abdulquadri Umar">
+                </div>
+                <div class="author-info">
+                    <h4>Abdulquadri Umar</h4>
+                    <p>Tech Specialist at Yomlinks with extensive troubleshooting experience</p>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <div data-include="includes/footer.html" data-include-id="footer"></div>
+
+    <!-- Embedded fallback templates for offline/file:// access -->
+    <template id="include-template-header">
+      <header id="nav">
+        <div class="left-nav">
+          <a href="./index.html" title="Yomlinks Home" class="logo-link"><img src="./images/YomlinksLogo.jpg" alt="Yomlinks logo" loading="lazy"></a>
+        </div>
+        <div class="right-nav">
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="./shop.html" class="nav-link">Shop</a>
+            <a href="./training.html" class="nav-link">Courses</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./contact.html" class="nav-link">Contact</a>
+          </nav>
+          <div class="theme-switcher" role="region" aria-label="Theme switcher">
+            <button 
+              class="theme-toggle" 
+              id="themeToggle" 
+              type="button" 
+              title="Switch to light mode"
+              aria-label="Toggle dark/light theme"
+              aria-checked="false"
+              role="switch">
+              <span class="icon-moon" aria-hidden="true"><i class="fas fa-moon"></i></span>
+              <span class="slider" aria-hidden="true"></span>
+              <span class="icon-sun" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            </button>
+          </div>
+          <a href="./shop.html" title="Shopping Cart" class="cart-icon" aria-label="Open shopping cart"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </header>
+    </template>
+
+    <template id="include-template-footer">
+      <div class="footer">
+        <div class="sub-foot">
+          <h4>Location</h4>
+          <p>Agbede, Ikorodu</p>
+          <p>Lagos, Nigeria</p>
+        </div>
+        <div class="sub-foot">
+          <h4>Contact</h4>
+          <a href="mailto:email@contact.com">ayoabdullah13.com</a>
+          <a href="tel:+07045033528">+07045033528</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Company</h4>
+          <a href="./index.html">About Us</a>
+          <a href="./services.html">Services</a>
+          <a href="./shop.html">Products</a>
+          <a href="./blog.html">Blog</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Support</h4>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">FAQ</a>
+          <a href="#">Track Order</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Legal</h4>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <p>© <span id="year"></span> Yomlinks. All rights reserved. | Premium Computer Hardware & Tech Solutions</p>
+      </footer>
+    </template>
+
+    <script src="./js/include.js" defer></script>
+    <script src="./fontawesome-free-6.6.0-web/js/all.min.js"></script>
+</body>
+</html>

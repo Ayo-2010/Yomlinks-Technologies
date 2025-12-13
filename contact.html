@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Yomlinks</title>
+    <meta name="description" content="Get in touch with Yomlinks — contact form, opening hours and location.">
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <meta property="og:title" content="Contact — Yomlinks">
+    <meta property="og:description" content="Get in touch with Yomlinks — contact form, opening hours and location.">
+    <meta property="og:image" content="./images/og-image.svg">
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="contact-style.css">
+    <script src="./js/theme.js"></script>
+    <script src="./js/active-link.js"></script>
+    </head>
+
+<body>
+    <!-- Hybrid includes: tries external files first, falls back to embedded templates -->
+    <div data-include="includes/header.html" data-include-id="header"></div>
+
+    <!-- Hero Section -->
+    <div class="contact-hero">
+        <div class="hero-content">
+            <h1>Let's Connect</h1>
+            <p>We'd love to hear from you. Reach out and let's create something amazing together.</p>
+        </div>
+        <div class="hero-accent"></div>
+    </div>
+
+    <!-- Main Contact Section -->
+    <section class="contact-section">
+        <div class="contact-wrapper">
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper">
+                <div class="form-card">
+                    <div class="form-header">
+                        <h2>Send us a Message</h2>
+                        <p>We're here to help. Fill out the form below and we'll get back to you within 2 business days.</p>
+                    </div>
+
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input id="name" name="name" type="text" required placeholder="John Doe" class="form-input">
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input id="email" name="email" type="email" required placeholder="you@example.com" class="form-input">
+                                <span class="form-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone (Optional)</label>
+                                <input id="phone" name="phone" type="tel" placeholder="+234 (0) 70 4503 3528" class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input id="subject" name="subject" type="text" placeholder="What's this about?" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Tell us what's on your mind..." class="form-input textarea"></textarea>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-footer">
+                            <div class="checkbox-group">
+                                <input id="privacy" type="checkbox" required class="form-checkbox">
+                                <label for="privacy" class="checkbox-label">I agree to the processing of my data in accordance with the <a href="#" class="link-accent">Privacy Policy</a>.</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                        <p id="formMessage" aria-live="polite" class="form-message"></p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <aside class="contact-info-wrapper">
+                <!-- Quick Contact Card -->
+                <div class="info-card info-card-primary">
+                    <div class="card-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Quick Support</h3>
+                    <p>Need immediate assistance? We're here to help.</p>
+                    <a href="tel:+487045033528" class="info-link">
+                        <span>+234 070 4503 3528</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Email Card -->
+                <div class="info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>Drop us a line anytime</p>
+                    <a href="mailto:ayoabdullah13@google.com" class="info-link">
+                        <span>ayoabdullah13@google.com</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Address Card -->
+                <div class="info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Us</h3>
+                    <p>Agbede, Ikorodu Lagos, Nigeria</p>
+                    <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="info-link">
+                        <span>Get Directions</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Hours Card -->
+                <div class="info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Business Hours</h3>
+                    <ul class="hours-list">
+                        <li>
+                            <span class="day">Mon — Fri</span>
+                            <span class="time">09:00 — 18:00</span>
+                        </li>
+                        <li>
+                            <span class="day">Saturday</span>
+                            <span class="time">10:00 — 15:00</span>
+                        </li>
+                        <li>
+                            <span class="day">Sunday</span>
+                            <span class="time">Closed</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Map -->
+                <div class="map-container">
+                    <iframe
+                        title="Yomlinks location"
+                        width="100%"
+                        height="300"
+                        style="border:0;border-radius:12px"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d63408.33341043853!2d3.46046!3d6.6443338!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sng!4v1765558350426!5m2!1sen!2sng">
+                    </iframe>
+                </div>
+
+                <!-- Social Links -->
+                <div class="social-links">
+                    <p>Connect with us</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="contact-cta">
+        <div class="cta-content">
+            <h2>Still have questions?</h2>
+            <p>Check out our FAQ or explore our blog for more information.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-secondary">View FAQ</a>
+                <a href="#" class="btn btn-outline">Read Our Blog</a>
+            </div>
+        </div>
+    </section>
+
+    <div data-include="includes/footer.html" data-include-id="footer"></div>
+
+    <!-- Embedded fallback templates for offline/file:// access -->
+    <template id="include-template-header">
+      <header id="nav">
+        <div class="left-nav">
+          <a href="./index.html" title="Yomlinks Home" class="logo-link"><img src="./images/YomlinksLogo.jpg" alt="Yomlinks logo" loading="lazy"></a>
+        </div>
+        <div class="right-nav">
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="./shop.html" class="nav-link">Shop</a>
+            <a href="./training.html" class="nav-link">Courses</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./contact.html" class="nav-link">Contact</a>
+          </nav>
+          <div class="theme-switcher" role="region" aria-label="Theme switcher">
+            <button 
+              class="theme-toggle" 
+              id="themeToggle" 
+              type="button" 
+              title="Switch to light mode"
+              aria-label="Toggle dark/light theme"
+              aria-checked="false"
+              role="switch">
+              <span class="icon-moon" aria-hidden="true"><i class="fas fa-moon"></i></span>
+              <span class="slider" aria-hidden="true"></span>
+              <span class="icon-sun" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            </button>
+          </div>
+          <a href="./shop.html" title="Shopping Cart" class="cart-icon" aria-label="Open shopping cart"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </header>
+    </template>
+
+    <template id="include-template-footer">
+      <div class="footer">
+        <div class="sub-foot">
+          <h4>Location</h4>
+          <p>Agbede, Ikorodu</p>
+          <p>Lagos, Nigeria</p>
+        </div>
+        <div class="sub-foot">
+          <h4>Contact</h4>
+          <a href="mailto:email@contact.com">ayoabdullah13.com</a>
+          <a href="tel:+07045033528">+07045033528</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Company</h4>
+          <a href="./index.html">About Us</a>
+          <a href="./services.html">Services</a>
+          <a href="./shop.html">Products</a>
+          <a href="./blog.html">Blog</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Support</h4>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">FAQ</a>
+          <a href="#">Track Order</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Legal</h4>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <p>© <span id="year"></span> Yomlinks. All rights reserved. | Premium Computer Hardware & Tech Solutions</p>
+      </footer>
+    </template>
+
+    <script src="./js/include.js" defer></script>
+    <script src="./fontawesome-free-6.6.0-web/js/all.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const form = e.currentTarget;
+            const errors = form.querySelectorAll('.form-error');
+            errors.forEach(error => error.textContent = '');
+
+            if (!form.reportValidity()) return;
+
+            const messageEl = document.getElementById('formMessage');
+            messageEl.textContent = 'Sending...';
+            messageEl.className = 'form-message loading';
+
+            setTimeout(() => {
+                form.reset();
+                messageEl.textContent = '✓ Thank you! Your message has been sent successfully.';
+                messageEl.className = 'form-message success';
+                setTimeout(() => {
+                    messageEl.textContent = '';
+                    messageEl.className = 'form-message';
+                }, 5000);
+            }, 600);
+        });
+
+        // Add input validation feedback
+        const inputs = document.querySelectorAll('.form-input');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (!this.value && this.required) {
+                    const error = this.parentElement.querySelector('.form-error');
+                    if (error) error.textContent = 'This field is required';
+                }
+            });
+            input.addEventListener('focus', function() {
+                const error = this.parentElement.querySelector('.form-error');
+                if (error) error.textContent = '';
+            });
+        });
+    </script>
+</body>
+
+</html>

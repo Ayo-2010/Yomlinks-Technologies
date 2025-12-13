@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Yomlinks | Premium Computer Hardware</title>
+    <meta name="description" content="Browse our complete selection of premium computers, components, and tech peripherals with expert recommendations">
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./images/favicon.svg">
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="./js/theme.js"></script>
+    <script src="./js/active-link.js"></script>
+    <style>
+        .shop-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .shop-sidebar {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: var(--spacing-lg);
+            height: fit-content;
+            position: sticky;
+            top: 90px;
+        }
+
+        .filter-group {
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filter-group:last-child {
+            border-bottom: none;
+        }
+
+        .filter-group h3 {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .filter-option input {
+            cursor: pointer;
+        }
+
+        .filter-option label {
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+
+        .filter-option input:checked + label {
+            color: var(--accent-color);
+        }
+
+        .shop-header {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .shop-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .sort-select {
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        .product-count {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        @media (max-width: 768px) {
+            .shop-container {
+                grid-template-columns: 1fr;
+            }
+
+            .shop-sidebar {
+                position: static;
+            }
+
+            .shop-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .shop-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .shop-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .sort-select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hybrid includes: tries external files first, falls back to embedded templates -->
+    <div data-include="includes/header.html" data-include-id="header"></div>
+
+    <!-- Shop Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Product Shop</h1>
+            <p>Discover our complete range of premium computer hardware and tech solutions</p>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="shop-section">
+        <div class="container">
+            <div class="shop-container">
+                <!-- Sidebar Filters -->
+                <aside class="shop-sidebar">
+                    <h2 style="font-size: 1.25rem; margin-bottom: var(--spacing-lg);">Filters</h2>
+
+                    <div class="filter-group">
+                        <h3>Category</h3>
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-laptops" name="category" value="laptops">
+                            <label for="cat-laptops">Laptops</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-desktops" name="category" value="desktops">
+                            <label for="cat-desktops">Desktops</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-peripherals" name="category" value="peripherals">
+                            <label for="cat-peripherals">Peripherals</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-components" name="category" value="components">
+                            <label for="cat-components">Components</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Price Range</h3>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price-0-100" name="price" value="0-100">
+                            <label for="price-0-100">Under $100</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price-100-500" name="price" value="100-500">
+                            <label for="price-100-500">$100 - $500</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price-500-1500" name="price" value="500-1500">
+                            <label for="price-500-1500">$500 - $1,500</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price-1500+" name="price" value="1500+">
+                            <label for="price-1500+">$1,500+</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-md);">Reset Filters</button>
+                </aside>
+
+                <!-- Main Shop Content -->
+                <main class="shop-main">
+                    <div class="shop-header">
+                        <div class="shop-controls">
+                            <span class="product-count">Showing 12 products</span>
+                            <select class="sort-select">
+                                <option>Sort by: Featured</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                                <option>Newest</option>
+                                <option>Rating</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="shop-grid">
+                        <!-- Product Cards -->
+                        <!-- 1. Gaming PC -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/gamingpc.webp" alt="High-Performance Gaming PC" loading="lazy">
+                                <span class="product-badge">Featured</span>
+                                <div class="product-overlay">
+                                    <a href="./products/gaming-pc.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Desktop PC</span>
+                                <h3>High-Performance Gaming PC</h3>
+                                <p class="product-description">RTX 4080 • i9-13900K • 32GB RAM</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$2,899</span>
+                                    <a href="./products/gaming-pc.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Mechanical Keyboard -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/keyboard.avif" alt="RGB Mechanical Keyboard" loading="lazy">
+                                <span class="product-badge">Popular</span>
+                                <div class="product-overlay">
+                                    <a href="./products/mechanical-keyboard.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Peripheral</span>
+                                <h3>RGB Mechanical Keyboard</h3>
+                                <p class="product-description">Cherry MX • Aluminum Frame</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$189</span>
+                                    <a href="./products/mechanical-keyboard.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Wireless Mouse -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/wirelessMouse.avif" alt="Precision Wireless Mouse" loading="lazy">
+                                <span class="product-badge">Best Seller</span>
+                                <div class="product-overlay">
+                                    <a href="./products/wireless-mouse.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Peripheral</span>
+                                <h3>Precision Wireless Mouse</h3>
+                                <p class="product-description">16,000 DPI • 70-hour Battery</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$79</span>
+                                    <a href="./products/wireless-mouse.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. USB-C Hub -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/usb-chub.avif" alt="7-in-1 USB-C Hub" loading="lazy">
+                                <span class="product-badge">Essential</span>
+                                <div class="product-overlay">
+                                    <a href="./products/usb-c-hub.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Accessory</span>
+                                <h3>7-in-1 USB-C Hub</h3>
+                                <p class="product-description">HDMI • USB 3.0 • SD Card</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$49</span>
+                                    <a href="./products/usb-c-hub.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5. Professional Laptop -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/hig-performance-laptop.avif" alt="Professional Workstation Laptop" loading="lazy">
+                                <span class="product-badge">Premium</span>
+                                <div class="product-overlay">
+                                    <a href="./products/workstation-laptop.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Laptop</span>
+                                <h3>Professional Workstation Laptop</h3>
+                                <p class="product-description">RTX 4070 • 64GB RAM • 4K</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$3,499</span>
+                                    <a href="./products/workstation-laptop.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6. Budget Laptop -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/budgetlaptop.avif" alt="Budget-Friendly Laptop" loading="lazy">
+                                <span class="product-badge">Value</span>
+                                <div class="product-overlay">
+                                    <a href="./products/budget-laptop.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Laptop</span>
+                                <h3>Budget-Friendly Laptop</h3>
+                                <p class="product-description">Ryzen 5 • 8GB RAM • 256GB SSD</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$599</span>
+                                    <a href="./products/budget-laptop.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 7. Monitor -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/monitor.avif" alt="4K Professional Monitor" loading="lazy">
+                                <span class="product-badge">New</span>
+                                <div class="product-overlay">
+                                    <a href="./products/4k-monitor.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Monitor</span>
+                                <h3>4K Professional Monitor</h3>
+                                <p class="product-description">27" 4K • 144Hz • USB-C</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$799</span>
+                                    <a href="./products/4k-monitor.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 8. Headset -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/headset.avif" alt="Professional Gaming Headset" loading="lazy">
+                                <span class="product-badge">Popular</span>
+                                <div class="product-overlay">
+                                    <a href="./products/gaming-headset.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Audio</span>
+                                <h3>Professional Gaming Headset</h3>
+                                <p class="product-description">7.1 Surround • Wireless • Noise Canceling</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$159</span>
+                                    <a href="./products/gaming-headset.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 9. Laptop Sleeve -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/laptop-sleeve.webp" alt="Premium Laptop Sleeve" loading="lazy">
+                                <span class="product-badge">Essential</span>
+                                <div class="product-overlay">
+                                    <a href="./products/laptop-sleeve.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Accessory</span>
+                                <h3>Premium Laptop Sleeve</h3>
+                                <p class="product-description">15.6" • Water Resistant • Padded</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$49</span>
+                                    <a href="./products/laptop-sleeve.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 10. Desktop Bundle -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/desktop_bundle.avif" alt="Complete Desktop Bundle" loading="lazy">
+                                <span class="product-badge">Bundle Deal</span>
+                                <div class="product-overlay">
+                                    <a href="./products/desktop-bundle.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Bundle</span>
+                                <h3>Complete Desktop Bundle</h3>
+                                <p class="product-description">PC • Monitor • Keyboard • Mouse</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$1,299</span>
+                                    <a href="./products/desktop-bundle.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 11. SSD Bundle -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/ssd-bundle.webp" alt="SSD Storage Bundle" loading="lazy">
+                                <span class="product-badge">Storage</span>
+                                <div class="product-overlay">
+                                    <a href="./products/ssd-bundle.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Storage</span>
+                                <h3>SSD Storage Bundle</h3>
+                                <p class="product-description">4TB • NVMe • High Speed</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$399</span>
+                                    <a href="./products/ssd-bundle.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 12. Tech Support Package -->
+                        <div class="product-card">
+                            <div class="product-image-wrapper">
+                                <img src="./images/remote-support.avif" alt="Tech Support Package" loading="lazy">
+                                <span class="product-badge">Service</span>
+                                <div class="product-overlay">
+                                    <a href="./products/tech-support.html" class="btn btn-white">View Details</a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Service</span>
+                                <h3>1-Year Tech Support Package</h3>
+                                <p class="product-description">24/7 Support • Remote Assistance</p>
+                                <div class="product-footer">
+                                    <span class="product-price">$199</span>
+                                    <a href="./products/tech-support.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary-bg), var(--tertiary-bg));
+            border-bottom: 1px solid var(--border-color);
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .shop-section {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background-color: var(--primary-bg);
+            min-height: calc(100vh - 70px);
+        }
+    </style>
+
+    <div data-include="includes/footer.html" data-include-id="footer"></div>
+
+    <!-- Embedded fallback templates for offline/file:// access -->
+    <template id="include-template-header">
+      <header id="nav">
+        <div class="left-nav">
+          <a href="./index.html" title="Yomlinks Home" class="logo-link"><img src="./images/YomlinksLogo.jpg" alt="Yomlinks logo" loading="lazy"></a>
+        </div>
+        <div class="right-nav">
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="./shop.html" class="nav-link">Shop</a>
+            <a href="./training.html" class="nav-link">Courses</a>
+            <a href="./blog.html" class="nav-link">Blog</a>
+            <a href="./contact.html" class="nav-link">Contact</a>
+          </nav>
+          <div class="theme-switcher" role="region" aria-label="Theme switcher">
+            <button 
+              class="theme-toggle" 
+              id="themeToggle" 
+              type="button" 
+              title="Switch to light mode"
+              aria-label="Toggle dark/light theme"
+              aria-checked="false"
+              role="switch">
+              <span class="icon-moon" aria-hidden="true"><i class="fas fa-moon"></i></span>
+              <span class="slider" aria-hidden="true"></span>
+              <span class="icon-sun" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            </button>
+          </div>
+          <a href="./shop.html" title="Shopping Cart" class="cart-icon" aria-label="Open shopping cart"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+      </header>
+    </template>
+
+    <template id="include-template-footer">
+      <div class="footer">
+        <div class="sub-foot">
+          <h4>Location</h4>
+          <p>Agbede, Ikorodu</p>
+          <p>Lagos, Nigeria</p>
+        </div>
+        <div class="sub-foot">
+          <h4>Contact</h4>
+          <a href="mailto:email@contact.com">ayoabdullah13.com</a>
+          <a href="tel:+07045033528">+07045033528</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Company</h4>
+          <a href="./index.html">About Us</a>
+          <a href="./services.html">Services</a>
+          <a href="./shop.html">Products</a>
+          <a href="./blog.html">Blog</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Support</h4>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns & Exchanges</a>
+          <a href="#">FAQ</a>
+          <a href="#">Track Order</a>
+        </div>
+        <div class="sub-foot">
+          <h4>Legal</h4>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <p>© <span id="year"></span> Yomlinks. All rights reserved. | Premium Computer Hardware & Tech Solutions</p>
+      </footer>
+    </template>
+
+    <script src="./js/include.js" defer></script>
+    <script src="./fontawesome-free-6.6.0-web/js/all.min.js"></script>
+</body>
+</html>

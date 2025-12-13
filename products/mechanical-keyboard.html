@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Mechanical Keyboard - Yomlinks</title>
+    <meta name="description" content="Premium RGB mechanical keyboard with Cherry MX switches, aluminum frame, and programmable keys. Perfect for gaming and professional typing.">
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../fontawesome-free-6.6.0-web/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .product-detail-section {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            background-color: var(--primary-bg);
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: var(--accent-color);
+        }
+
+        .product-detail-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+            align-items: start;
+        }
+
+        .product-gallery {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
+        .product-gallery-main {
+            width: 100%;
+            height: 500px;
+            background-color: var(--tertiary-bg);
+            overflow: hidden;
+        }
+
+        .product-gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-gallery-thumbs {
+            display: flex;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md);
+            background-color: var(--tertiary-bg);
+            overflow-x: auto;
+        }
+
+        .gallery-thumb {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-thumb:hover {
+            border-color: var(--accent-color);
+        }
+
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-detail-info h1 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+            color: var(--warning-color);
+        }
+
+        .rating-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .product-price-section {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .price-display {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .price-current {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .price-original {
+            font-size: 1rem;
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .price-discount {
+            background-color: var(--danger-color);
+            color: var(--text-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .product-status {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .status-available {
+            color: var(--success-color);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .spec-item {
+            background-color: var(--tertiary-bg);
+            padding: var(--spacing-md);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .spec-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-value {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            background-color: var(--tertiary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            width: fit-content;
+        }
+
+        .qty-selector button {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            transition: background-color 0.2s;
+        }
+
+        .qty-selector button:hover {
+            background-color: var(--border-color);
+        }
+
+        .qty-selector input {
+            width: 60px;
+            border: none;
+            background-color: transparent;
+            text-align: center;
+            color: var(--text-primary);
+            font-weight: 600;
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+        }
+
+        .add-to-cart-btn {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .product-description {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .description-section h3 {
+            margin-bottom: var(--spacing-md);
+            color: var(--text-primary);
+        }
+
+        .description-section ul {
+            list-style: none;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .description-section li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-secondary);
+        }
+
+        .description-section i {
+            color: var(--success-color);
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .related-products {
+            margin-top: var(--spacing-2xl);
+            padding-top: var(--spacing-2xl);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .related-products h2 {
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        @media (max-width: 1024px) {
+            .product-detail-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-gallery-main {
+                height: 350px;
+            }
+
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .add-to-cart-btn {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .qty-selector {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div data-include="../includes/header.html"></div>
+
+    <section class="product-detail-section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span>/</span>
+                <a href="../shop.html">Shop</a>
+                <span>/</span>
+                <span>Mechanical Keyboard</span>
+            </div>
+
+            <div class="product-detail-wrapper">
+                <!-- Product Gallery -->
+                <div class="product-gallery">
+                    <div class="product-gallery-main">
+                        <img id="mainImage" src="../images/keyboard.avif" alt="RGB Mechanical Keyboard">
+                    </div>
+                    <div class="product-gallery-thumbs">
+                        <div class="gallery-thumb">
+                            <img src="../images/keyboard.avif" alt="View 1" onclick="changeImage(this)">
+                        </div>
+                        <div class="gallery-thumb">
+                            <img src="../images/keyboard.svg" alt="View 2" onclick="changeImage(this)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-detail-info">
+                    <h1>RGB Mechanical Keyboard</h1>
+                    
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-text">(512 reviews)</span>
+                    </div>
+
+                    <div class="product-price-section">
+                        <div class="price-display">
+                            <span class="price-current">$189</span>
+                            <span class="price-original">$249</span>
+                            <span class="price-discount">24% OFF</span>
+                        </div>
+                        <div class="product-status">
+                            <i class="fas fa-check-circle status-available"></i>
+                            <span>In Stock - Ships within 24 hours</span>
+                        </div>
+                    </div>
+
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">Switch Type</div>
+                            <div class="spec-value">Cherry MX RGB</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Layout</div>
+                            <div class="spec-value">Full Size 104-Key</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Connection</div>
+                            <div class="spec-value">USB-C / 2.4GHz</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Lighting</div>
+                            <div class="spec-value">Per-Key RGB</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Material</div>
+                            <div class="spec-value">Aluminum + ABS</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Warranty</div>
+                            <div class="spec-value">1-Year</div>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <div class="qty-selector">
+                            <button onclick="decreaseQty()">−</button>
+                            <input type="number" id="quantity" value="1" min="1" readonly>
+                            <button onclick="increaseQty()">+</button>
+                        </div>
+                        <button class="btn btn-primary add-to-cart-btn">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                    </div>
+
+                    <div style="display: flex; gap: var(--spacing-md);">
+                        <button class="btn btn-secondary" style="flex: 1;">
+                            <i class="fas fa-heart"></i> Wishlist
+                        </button>
+                        <button class="btn btn-secondary" style="flex: 1;">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Description -->
+            <div class="product-description">
+                <div class="description-section">
+                    <h3>About This Keyboard</h3>
+                    <p>Experience premium typing with our RGB Mechanical Keyboard. Featuring genuine Cherry MX switches, a premium aluminum frame, and per-key RGB lighting, this keyboard is designed for both gaming enthusiasts and professional typists who demand quality and reliability.</p>
+                </div>
+
+                <div class="description-section">
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> <strong>Genuine Cherry MX:</strong> Premium mechanical switches with excellent feedback</li>
+                        <li><i class="fas fa-check"></i> <strong>Per-Key RGB:</strong> 16 million color options for custom lighting effects</li>
+                        <li><i class="fas fa-check"></i> <strong>Premium Build:</strong> Aluminum frame with ABS keycaps for durability</li>
+                        <li><i class="fas fa-check"></i> <strong>Dual Connection:</strong> USB-C wired and 2.4GHz wireless modes</li>
+                        <li><i class="fas fa-check"></i> <strong>Programmable Keys:</strong> Customize macros and lighting via software</li>
+                        <li><i class="fas fa-check"></i> <strong>Comfortable Typing:</strong> Ergonomic design for extended gaming sessions</li>
+                    </ul>
+                </div>
+
+                <div class="description-section">
+                    <h3>What's Included</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> RGB Mechanical Keyboard</li>
+                        <li><i class="fas fa-check"></i> USB-C charging cable</li>
+                        <li><i class="fas fa-check"></i> 2.4GHz wireless adapter</li>
+                        <li><i class="fas fa-check"></i> Key puller tool</li>
+                        <li><i class="fas fa-check"></i> Software for customization</li>
+                        <li><i class="fas fa-check"></i> User manual and warranty</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="related-products">
+                <h2>Related Products</h2>
+                <div class="featured-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="../images/wirelessMouse.avif" alt="Wireless Mouse" loading="lazy">
+                            <div class="product-overlay">
+                                <a href="./wireless-mouse.html" class="btn btn-white">View Details</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Peripheral</span>
+                            <h3>Precision Wireless Mouse</h3>
+                            <p class="product-description">16,000 DPI • 70-hour Battery</p>
+                            <div class="product-footer">
+                                <span class="product-price">$79</span>
+                                <a href="./wireless-mouse.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="../images/headset.avif" alt="Gaming Headset" loading="lazy">
+                            <div class="product-overlay">
+                                <a href="./gaming-headset.html" class="btn btn-white">View Details</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Audio</span>
+                            <h3>Professional Gaming Headset</h3>
+                            <p class="product-description">7.1 Surround • Noise Canceling</p>
+                            <div class="product-footer">
+                                <span class="product-price">$159</span>
+                                <a href="./gaming-headset.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="../images/usb-chub.avif" alt="USB-C Hub" loading="lazy">
+                            <div class="product-overlay">
+                                <a href="./usb-c-hub.html" class="btn btn-white">View Details</a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Accessory</span>
+                            <h3>7-in-1 USB-C Hub</h3>
+                            <p class="product-description">HDMI • USB 3.0 • SD Card</p>
+                            <div class="product-footer">
+                                <span class="product-price">$49</span>
+                                <a href="./usb-c-hub.html" class="product-link"><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div data-include="../includes/footer.html"></div>
+
+    <script src="../js/include.js"></script>
+    <script src="../fontawesome-free-6.6.0-web/js/all.min.js"></script>
+    <script>
+        function changeImage(img) {
+            document.getElementById('mainImage').src = img.src;
+        }
+
+        function increaseQty() {
+            const input = document.getElementById('quantity');
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decreaseQty() {
+            const input = document.getElementById('quantity');
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+    </script>
+    <script src="../js/theme.js"></script>
+</body>
+</html>

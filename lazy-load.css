@@ -1,0 +1,42 @@
+/* ============================================================================
+   LAZY LOADING STYLES
+   ============================================================================ */
+
+/* Fade in animation for lazy-loaded images */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
+}
+
+img[loading="lazy"].image-loaded {
+    opacity: 1;
+}
+
+/* Picture elements with lazy loading */
+picture img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+picture img[loading="lazy"].image-loaded {
+    opacity: 1;
+}
+
+/* Blur effect for progressive image loading */
+img[loading="lazy"][src*="-blur"],
+img[loading="lazy"][src*="-lqip"] {
+    filter: blur(10px);
+}
+
+img[loading="lazy"][src*="-blur"].image-loaded,
+img[loading="lazy"][src*="-lqip"].image-loaded {
+    filter: blur(0);
+}
+
+/* Image placeholders */
+img[loading="lazy"]:not([src]) {
+    background-color: var(--tertiary-bg);
+    min-height: 200px;
+    display: block;
+}
